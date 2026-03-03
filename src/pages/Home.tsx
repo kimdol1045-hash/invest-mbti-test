@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <div className="home">
       <header className="home-header">
-        <h1 className="home-title">MBTI 투자 성향 테스트</h1>
+        <h1 className="home-title">투자MBTI테스트</h1>
       </header>
 
       <main className="home-main">

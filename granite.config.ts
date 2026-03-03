@@ -1,9 +1,9 @@
 import { defineConfig } from '@apps-in-toss/web-framework';
 
 export default defineConfig({
-  appName: 'mbti-invest-test',
+  appName: 'invest-mbti-test',
   brand: {
-    displayName: 'MBTI 투자 성향 테스트',
+    displayName: '투자MBTI테스트',
     primaryColor: '#3182F6',
     icon: 'https://placeholder.com/icon.png',
   },

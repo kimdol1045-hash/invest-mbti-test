@@ -11,7 +11,7 @@ const AUTH_CONFIG = {
   TOKEN_URL: 'https://auth.toss.im/oauth2/token',
 } as const;
 
-const STORAGE_KEY = 'mbti-invest-test:auth';
+const STORAGE_KEY = 'invest-mbti-test:auth';
 
 export interface AuthUser {
   accessToken: string;

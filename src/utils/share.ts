@@ -28,7 +28,7 @@ async function generateShareImage(
     ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
     ctx.font = '500 14px -apple-system, BlinkMacSystemFont, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('MBTI 투자 성향 테스트', 300, 36);
+    ctx.fillText('투자MBTI테스트', 300, 36);
 
     // 이모지
     ctx.font = '40px serif';
@@ -63,7 +63,7 @@ async function generateShareImage(
     ctx.fillStyle = '#8B95A1';
     ctx.font = '400 12px -apple-system, BlinkMacSystemFont, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('나도 테스트하러 가기 → 토스에서 "MBTI 투자 성향 테스트"', 300, 380);
+    ctx.fillText('나도 테스트하러 가기 → 토스에서 "투자MBTI테스트"', 300, 380);
 
     return new Promise((resolve) => {
       canvas.toBlob((blob) => resolve(blob), 'image/png');
@@ -85,7 +85,7 @@ export async function shareResult(
   personality: PersonalityType,
 ): Promise<{ success: boolean; method: string }> {
   // TODO: 콘솔 등록 후 실제 intoss:// 스킴으로 교체
-  const APP_LINK = 'intoss://miniapp?appId=mbti-invest-test';
+  const APP_LINK = 'intoss://miniapp?appId=invest-mbti-test';
   const shareText = `나의 투자 성향은 "${personality.name}" (${mbtiType} 스타일)이래요! ${personality.emoji}\n${personality.description}\n\n나도 테스트하러 가기 → ${APP_LINK}`;
 
   // 1순위: 토스 네이티브 공유 API
@@ -100,7 +100,7 @@ export async function shareResult(
     try {
       const imageBlob = await generateShareImage(mbtiType, personality);
       const shareData: ShareData = {
-        title: `MBTI 투자 성향 테스트 - ${personality.name}`,
+        title: `투자MBTI테스트 - ${personality.name}`,
         text: shareText,
       };
 

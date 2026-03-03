@@ -1,7 +1,7 @@
 const KEYS = {
-  TEST_RESULT: 'mbti-invest-test:test-result',
-  PROGRESS: 'mbti-invest-test:progress',
-  BADGES: 'mbti-invest-test:badges',
+  TEST_RESULT: 'invest-mbti-test:test-result',
+  PROGRESS: 'invest-mbti-test:progress',
+  BADGES: 'invest-mbti-test:badges',
 } as const;
 
 interface ProgressData {
