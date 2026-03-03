@@ -1,0 +1,22 @@
+.home { min-height: 100vh; padding-bottom: 40px; }
+.home-header { padding: 16px 20px; }
+.home-title { font-size: 20px; font-weight: 700; color: var(--color-text-primary); }
+.home-main { padding: 0 20px; }
+.home-hero { text-align: center; padding: 40px 0; }
+.home-subtitle { font-size: 22px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; }
+.home-description { font-size: 15px; color: var(--color-text-secondary); margin-bottom: 32px; }
+.home-result-emoji { font-size: 40px; margin: 12px 0 8px; }
+.home-result-name { font-size: 20px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 4px; }
+.home-result-mbti { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 24px; }
+.home-hero-buttons { display: flex; gap: 8px; }
+.home-cta-button { flex: 1; padding: 16px; background-color: var(--color-primary); color: #fff; border: none; border-radius: 16px; font-size: 17px; font-weight: 600; cursor: pointer; }
+.home-cta-button.secondary { background-color: var(--color-grey-100); color: var(--color-text-primary); }
+.home-section { margin-top: 32px; padding: 20px; background: var(--color-grey-50); border-radius: 16px; }
+.home-section-title { font-size: 16px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px; }
+.home-link-button { background: none; border: none; color: var(--color-primary); font-size: 14px; cursor: pointer; padding: 0; }
+.home-progress-summary { margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px; }
+.home-progress-item { display: flex; align-items: center; gap: 8px; }
+.home-progress-label { font-size: 13px; color: var(--color-text-secondary); min-width: 60px; }
+.home-progress-bar-track { flex: 1; height: 6px; background: var(--color-grey-200); border-radius: 3px; overflow: hidden; }
+.home-progress-bar-fill { height: 100%; background: var(--color-primary); border-radius: 3px; transition: width 0.3s ease; }
+.home-progress-value { font-size: 13px; font-weight: 600; color: var(--color-text-primary); min-width: 40px; text-align: right; }

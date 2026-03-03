@@ -1,0 +1,21 @@
+.result { min-height: 100vh; padding-bottom: 40px; }
+.result-main { padding: 0 20px; }
+.result-type { text-align: center; padding: 32px 0; }
+.result-emoji { font-size: 40px; display: block; margin-bottom: 16px; }
+.result-name { font-size: 24px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 4px; }
+.result-mbti { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 12px; }
+.result-description { font-size: 16px; color: var(--color-text-primary); line-height: 1.5; }
+.result-section { margin-top: 28px; }
+.result-section-title { font-size: 16px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px; }
+.result-traits, .result-cautions { list-style: none; padding: 0; }
+.result-traits li, .result-cautions li { padding: 8px 0; font-size: 14px; color: var(--color-text-primary); line-height: 1.5; }
+.result-traits li::before { content: '• '; color: var(--color-primary); }
+.result-cautions li::before { content: '• '; color: var(--color-orange-500); }
+.result-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.result-tool-chip { padding: 10px 16px; background: var(--color-blue-50); color: var(--color-primary); border: none; border-radius: 20px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.result-compat { font-size: 14px; color: var(--color-text-primary); margin-bottom: 8px; }
+.result-compat-button { margin-top: 8px; background: none; border: none; color: var(--color-primary); font-size: 14px; font-weight: 500; cursor: pointer; padding: 0; }
+.result-actions { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+.result-share-button { width: 100%; padding: 16px; background: var(--color-primary); color: #fff; border: none; border-radius: 16px; font-size: 16px; font-weight: 600; cursor: pointer; }
+.result-encyclopedia-button { width: 100%; padding: 16px; background: var(--color-grey-100); color: var(--color-text-primary); border: none; border-radius: 16px; font-size: 16px; font-weight: 600; cursor: pointer; }
+.result-share-status { text-align: center; font-size: 13px; color: var(--color-green-500); margin-top: 4px; }

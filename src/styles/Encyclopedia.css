@@ -1,0 +1,13 @@
+.encyclopedia { min-height: 100vh; }
+.encyclopedia-tabs { display: flex; padding: 0 20px; gap: 8px; margin-bottom: 16px; }
+.encyclopedia-tab { padding: 10px 20px; background: var(--color-grey-100); border: none; border-radius: 20px; font-size: 14px; font-weight: 500; color: var(--color-text-secondary); cursor: pointer; }
+.encyclopedia-tab.active { background: var(--color-text-primary); color: #fff; }
+.encyclopedia-list { padding: 0 20px; }
+.encyclopedia-item { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--color-grey-100); background: none; border-left: none; border-right: none; border-top: none; cursor: pointer; text-align: left; }
+.encyclopedia-item-info { display: flex; flex-direction: column; gap: 2px; }
+.encyclopedia-item-name { font-size: 16px; font-weight: 600; color: var(--color-text-primary); }
+.encyclopedia-item-english { font-size: 12px; color: var(--color-text-secondary); }
+.encyclopedia-badge { padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+.difficulty-beginner { background: var(--color-blue-50); color: var(--color-primary); }
+.difficulty-intermediate { background: var(--color-orange-50); color: var(--color-orange-500); }
+.difficulty-advanced { background: var(--color-red-50); color: var(--color-red-500); }

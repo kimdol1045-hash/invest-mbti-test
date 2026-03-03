@@ -1,0 +1,10 @@
+.test { min-height: 100vh; display: flex; flex-direction: column; }
+.test-counter-bar { display: flex; justify-content: flex-end; padding: 8px 20px; }
+.test-counter { font-size: 14px; color: var(--color-text-secondary); }
+.test-progress { height: 4px; background: var(--color-grey-200); }
+.test-progress-bar { height: 100%; background: var(--color-primary); border-radius: 2px; transition: width 0.3s ease; }
+.test-main { flex: 1; padding: 40px 20px; display: flex; flex-direction: column; }
+.test-question { font-size: 20px; font-weight: 600; color: var(--color-text-primary); line-height: 1.5; margin-bottom: 32px; }
+.test-options { display: flex; flex-direction: column; gap: 12px; }
+.test-option { padding: 20px; background: var(--color-grey-50); border: 2px solid var(--color-grey-200); border-radius: 16px; font-size: 15px; color: var(--color-text-primary); cursor: pointer; text-align: left; line-height: 1.5; transition: border-color 0.2s, background-color 0.2s; }
+.test-option:hover { border-color: var(--color-primary); background: var(--color-blue-50); }
