@@ -66,10 +66,17 @@ let cache = {
 
 let initialized = false;
 
-// --- 네이티브 Storage 래퍼 (localStorage 폴백) ---
+// --- 네이티브 Storage 래퍼 (localStorage 폴백 + 타임아웃) ---
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>((_, reject) => setTimeout(() => reject(new Error('timeout')), ms)),
+  ]);
+}
+
 async function nativeGet(key: string): Promise<string | null> {
   try {
-    return await Storage.getItem(key);
+    return await withTimeout(Storage.getItem(key), 1000);
   } catch {
     return localStorage.getItem(key);
   }
@@ -77,7 +84,7 @@ async function nativeGet(key: string): Promise<string | null> {
 
 async function nativeSet(key: string, value: string): Promise<void> {
   try {
-    await Storage.setItem(key, value);
+    await withTimeout(Storage.setItem(key, value), 1000);
   } catch {
     localStorage.setItem(key, value);
   }
@@ -85,7 +92,7 @@ async function nativeSet(key: string, value: string): Promise<void> {
 
 async function nativeRemove(key: string): Promise<void> {
   try {
-    await Storage.removeItem(key);
+    await withTimeout(Storage.removeItem(key), 1000);
   } catch {
     localStorage.removeItem(key);
   }
