@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ProgressBar } from '@toss/tds-mobile';
+import { ProgressBar, ConfirmDialog } from '@toss/tds-mobile';
+import { graniteEvent } from '@apps-in-toss/web-framework';
 import { questions } from '../data/questions';
 import { calculateResult } from '../utils/calculateResult';
 import { storage } from '../utils/storage';
@@ -10,9 +11,25 @@ export default function Test() {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
+  const [showBackDialog, setShowBackDialog] = useState(false);
 
   const question = questions[currentIndex];
   const progress = (currentIndex + 1) / questions.length;
+
+  useEffect(() => {
+    const unsubscription = graniteEvent.addEventListener('backEvent', {
+      onEvent: () => {
+        setShowBackDialog(true);
+      },
+      onError: (error) => {
+        console.error(`뒤로가기 이벤트 오류: ${error}`);
+      },
+    });
+
+    return () => {
+      unsubscription();
+    };
+  }, []);
 
   const handleAnswer = (value: string) => {
     const newAnswers = [...answers, value];
@@ -30,7 +47,6 @@ export default function Test() {
   return (
     <div className="test">
       <div className="test-header">
-        <button className="test-back" onClick={() => navigate(-1)}>‹</button>
         <span className="test-counter">
           {currentIndex + 1} / {questions.length}
         </span>
@@ -52,6 +68,23 @@ export default function Test() {
           ))}
         </div>
       </main>
+
+      <ConfirmDialog
+        open={showBackDialog}
+        title="테스트를 그만할까요?"
+        description="진행 내용이 저장되지 않아요."
+        cancelButton={
+          <ConfirmDialog.CancelButton onClick={() => setShowBackDialog(false)}>
+            계속하기
+          </ConfirmDialog.CancelButton>
+        }
+        confirmButton={
+          <ConfirmDialog.ConfirmButton onClick={() => navigate('/', { replace: true })}>
+            나가기
+          </ConfirmDialog.ConfirmButton>
+        }
+        onClose={() => setShowBackDialog(false)}
+      />
     </div>
   );
 }
