@@ -1,0 +1,26 @@
+.compat { min-height: 100vh; padding-bottom: 40px; }
+.compat-main { padding: 0 20px; }
+.compat-me { text-align: center; padding: 24px 0; }
+.compat-me-emoji { font-size: 40px; display: block; margin-bottom: 8px; }
+.compat-me-name { font-size: 20px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 2px; }
+.compat-me-mbti { font-size: 14px; color: var(--color-text-secondary); }
+.compat-section { margin-top: 24px; }
+.compat-section-title { font-size: 16px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px; }
+.compat-card { padding: 20px; border-radius: 16px; cursor: pointer; transition: transform 0.2s; }
+.compat-card:active { transform: scale(0.98); }
+.compat-card.good { background: var(--color-blue-50); }
+.compat-card.complement { background: var(--color-orange-50); }
+.compat-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.compat-card-emoji { font-size: 32px; }
+.compat-card-name { font-size: 17px; font-weight: 700; color: var(--color-text-primary); }
+.compat-card-mbti { font-size: 13px; color: var(--color-text-secondary); }
+.compat-card-desc { font-size: 14px; color: var(--color-text-primary); line-height: 1.5; margin-bottom: 16px; }
+.compat-card-reason { padding: 14px; background: rgba(255,255,255,0.7); border-radius: 12px; margin-bottom: 16px; }
+.compat-card-reason-title { font-size: 13px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 6px; }
+.compat-card-reason-text { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+.compat-shared-tools { margin-top: 4px; }
+.compat-tools-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 8px; }
+.compat-tools-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.compat-tool-chip { padding: 6px 12px; background: rgba(255,255,255,0.8); border-radius: 16px; font-size: 12px; font-weight: 500; color: var(--color-primary); }
+.compat-tool-chip.complement { color: var(--color-orange-500); }
+.compat-tools-none { font-size: 12px; color: var(--color-text-secondary); }
