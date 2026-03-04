@@ -1,0 +1,18 @@
+.compat { min-height: 100vh; padding-bottom: 40px; }
+.compat-main { padding: 0 20px; }
+.compat-me { text-align: center; padding: 24px 0; }
+.compat-me-emoji { font-size: 40px; display: block; margin-bottom: 8px; }
+.compat-me-name { font-size: 20px; font-weight: 700; color: #191F28; margin-bottom: 6px; }
+.compat-section { margin-top: 24px; }
+.compat-section-title { font-size: 16px; font-weight: 600; color: #191F28; margin-bottom: 12px; }
+.compat-card { padding: 20px; border-radius: 16px; cursor: pointer; transition: transform 0.2s; }
+.compat-card:active { transform: scale(0.98); }
+.compat-card.good { background: #E8F3FF; }
+.compat-card.complement { background: #FFF3E0; }
+.compat-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.compat-card-emoji { font-size: 32px; }
+.compat-card-name { font-size: 17px; font-weight: 700; color: #191F28; margin-bottom: 4px; }
+.compat-card-reason { padding: 14px; background: rgba(255,255,255,0.7); border-radius: 12px; margin: 16px 0; }
+.compat-shared-tools { margin-top: 4px; }
+.compat-tools-label { font-size: 12px; color: #6B7684; margin-bottom: 8px; }
+.compat-tools-list { display: flex; flex-wrap: wrap; gap: 6px; }

@@ -1,0 +1,16 @@
+.result { min-height: 100vh; padding-bottom: 120px; }
+.result-main { padding: 0 20px; }
+.result-type { text-align: center; padding: 32px 0; }
+.result-emoji { font-size: 40px; display: block; margin-bottom: 16px; }
+.result-name { font-size: 24px; font-weight: 700; color: #191F28; margin-bottom: 8px; }
+.result-description { font-size: 16px; color: #191F28; line-height: 1.5; }
+.result-section { margin-top: 28px; }
+.result-section-title { font-size: 16px; font-weight: 600; color: #191F28; margin-bottom: 12px; }
+.result-traits, .result-cautions { list-style: none; padding: 0; }
+.result-traits li, .result-cautions li { padding: 8px 0; font-size: 14px; color: #191F28; line-height: 1.5; }
+.result-traits li::before { content: '• '; color: #3182F6; }
+.result-cautions li::before { content: '• '; color: #F97316; }
+.result-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.result-tool-chip { padding: 10px 16px; background: #E8F3FF; color: #3182F6; border: none; border-radius: 20px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.result-tool-chip:hover { background: #C9E2FF; }
+.result-compat { font-size: 14px; color: #191F28; margin-bottom: 8px; }

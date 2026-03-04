@@ -1,0 +1,3853 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "JTwF3",
+      "x": 0,
+      "y": 0,
+      "name": "앱 로고 (600x600)",
+      "width": 600,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "pdknu",
+          "name": "logo-bg",
+          "clip": true,
+          "width": 600,
+          "height": 600,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#3182F6",
+                "position": 0
+              },
+              {
+                "color": "#2272EB",
+                "position": 1
+              }
+            ]
+          },
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "HAZ3Y",
+              "name": "iconWrap",
+              "width": 360,
+              "height": 360,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "kJJCi",
+                  "name": "chartIcon",
+                  "width": 280,
+                  "height": 260,
+                  "gap": 18,
+                  "justifyContent": "center",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "eFvB1",
+                      "name": "bar1",
+                      "width": 48,
+                      "height": 90,
+                      "fill": "#FFFFFF60",
+                      "cornerRadius": 10
+                    },
+                    {
+                      "type": "frame",
+                      "id": "haNiq",
+                      "name": "bar2",
+                      "width": 48,
+                      "height": 160,
+                      "fill": "#FFFFFF99",
+                      "cornerRadius": 10
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CatTT",
+                      "name": "bar3",
+                      "width": 48,
+                      "height": 230,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 10
+                    },
+                    {
+                      "type": "frame",
+                      "id": "H5R3U",
+                      "name": "bar4",
+                      "width": 48,
+                      "height": 130,
+                      "fill": "#FFFFFF80",
+                      "cornerRadius": 10
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "CEW2Z",
+      "x": 700,
+      "y": 0,
+      "name": "다크모드 앱 로고 (600x600)",
+      "width": 600,
+      "height": 600,
+      "fill": "#191F28",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "IfWBe",
+          "name": "dark-logo-bg",
+          "clip": true,
+          "width": 600,
+          "height": 600,
+          "fill": "#191F28",
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "yQzyk",
+              "name": "darkIconWrap",
+              "width": 360,
+              "height": 360,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "e449R",
+                  "name": "darkChartIcon",
+                  "width": 280,
+                  "height": 260,
+                  "gap": 18,
+                  "justifyContent": "center",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "wwdhB",
+                      "name": "dbar1",
+                      "width": 48,
+                      "height": 90,
+                      "fill": "#3182F640",
+                      "cornerRadius": 10
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Jd1Nu",
+                      "name": "dbar2",
+                      "width": 48,
+                      "height": 160,
+                      "fill": "#3182F680",
+                      "cornerRadius": 10
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qH2md",
+                      "name": "dbar3",
+                      "width": 48,
+                      "height": 230,
+                      "fill": "#3182F6",
+                      "cornerRadius": 10
+                    },
+                    {
+                      "type": "frame",
+                      "id": "k98nc",
+                      "name": "dbar4",
+                      "width": 48,
+                      "height": 130,
+                      "fill": "#3182F680",
+                      "cornerRadius": 10
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "QLmKK",
+      "x": 1400,
+      "y": 0,
+      "name": "정방형 썸네일 (1000x1000)",
+      "clip": true,
+      "width": 1000,
+      "height": 1000,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#E8F3FF",
+            "position": 0
+          },
+          {
+            "color": "#FFFFFF",
+            "position": 1
+          }
+        ]
+      },
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "LPOyg",
+          "name": "topSection",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": 60,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "XZjfO",
+              "name": "thumbBadge",
+              "fill": "#3182F6",
+              "cornerRadius": 100,
+              "padding": [
+                8,
+                20
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bG9dh",
+                  "name": "badgeText",
+                  "fill": "#FFFFFF",
+                  "content": "투자 성향 테스트",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "RtjpK",
+              "name": "thumbTitle",
+              "fill": "#191F28",
+              "content": "투자 MBTI 테스트",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 64,
+              "fontWeight": "800",
+              "letterSpacing": -2
+            },
+            {
+              "type": "text",
+              "id": "06Xst",
+              "name": "thumbSub",
+              "fill": "#8B95A1",
+              "textGrowth": "fixed-width",
+              "width": 700,
+              "content": "나의 투자 스타일을 알아보고\n분석 도구를 재미있게 학습해요",
+              "lineHeight": 1.5,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 30,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "Og5Zm",
+              "name": "thumbCharts",
+              "width": 400,
+              "height": 180,
+              "gap": 20,
+              "justifyContent": "center",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "pqxvR",
+                  "name": "tc1",
+                  "width": 56,
+                  "height": 60,
+                  "fill": "#3182F640",
+                  "cornerRadius": 12
+                },
+                {
+                  "type": "frame",
+                  "id": "7P0n1",
+                  "name": "tc2",
+                  "width": 56,
+                  "height": 100,
+                  "fill": "#3182F680",
+                  "cornerRadius": 12
+                },
+                {
+                  "type": "frame",
+                  "id": "FwzUM",
+                  "name": "tc3",
+                  "width": 56,
+                  "height": 160,
+                  "fill": "#3182F6",
+                  "cornerRadius": 12
+                },
+                {
+                  "type": "frame",
+                  "id": "uEt2e",
+                  "name": "tc4",
+                  "width": 56,
+                  "height": 80,
+                  "fill": "#3182F680",
+                  "cornerRadius": 12
+                },
+                {
+                  "type": "frame",
+                  "id": "cdMz2",
+                  "name": "tc5",
+                  "width": 56,
+                  "height": 120,
+                  "fill": "#3182F6B3",
+                  "cornerRadius": 12
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "m6AEa",
+      "x": 0,
+      "y": 700,
+      "name": "가로형 썸네일 (1932x828)",
+      "clip": true,
+      "width": 1932,
+      "height": 828,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 90,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#E8F3FF",
+            "position": 0
+          },
+          {
+            "color": "#FFFFFF",
+            "position": 0.6
+          },
+          {
+            "color": "#E8F3FF",
+            "position": 1
+          }
+        ]
+      },
+      "gap": 50,
+      "padding": 60,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "7CYpN",
+          "name": "leftPart",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            100,
+            0,
+            0,
+            0
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "YV6rQ",
+              "name": "wideBadge",
+              "fill": "#3182F6",
+              "cornerRadius": 100,
+              "padding": [
+                8,
+                20
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mwHea",
+                  "name": "wideBadgeText",
+                  "fill": "#FFFFFF",
+                  "content": "교육 · 투자 성향 테스트",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "gfVmm",
+              "name": "wideTitle",
+              "fill": "#191F28",
+              "content": "투자 MBTI 테스트",
+              "fontFamily": "Inter",
+              "fontSize": 76,
+              "fontWeight": "800",
+              "letterSpacing": -2
+            },
+            {
+              "type": "text",
+              "id": "ScTQN",
+              "name": "wideSub",
+              "fill": "#8B95A1",
+              "textGrowth": "fixed-width",
+              "width": 700,
+              "content": "12문항 성향 테스트로 16가지 투자 스타일을 발견하고\n37개 분석 도구를 퀴즈와 함께 학습하세요",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 26,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "VwmC0",
+              "name": "wideFeatures",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "JRB4y",
+                  "name": "feat1",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E8EB"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hIbRA",
+                      "name": "feat1Text",
+                      "fill": "#191F28",
+                      "content": "성향 테스트",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Ccw0O",
+                  "name": "feat2",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E8EB"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "J1bsN",
+                      "name": "feat2Text",
+                      "fill": "#191F28",
+                      "content": "분석 도구 도감",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lN8Of",
+                  "name": "feat3",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E8EB"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HWaOQ",
+                      "name": "feat3Text",
+                      "fill": "#191F28",
+                      "content": "퀴즈 학습",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PAyrX",
+          "name": "rightPart",
+          "width": 600,
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Nsb1d",
+              "name": "phoneFrame",
+              "clip": true,
+              "width": 460,
+              "height": 700,
+              "fill": "#FFFFFF",
+              "cornerRadius": 32,
+              "stroke": {
+                "thickness": 2,
+                "fill": "#E5E8EB"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#191F2815",
+                "offset": {
+                  "x": 0,
+                  "y": 8
+                },
+                "blur": 40
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "YLhCw",
+                  "name": "phoneAppHeader",
+                  "width": "fill_container",
+                  "height": 40,
+                  "padding": [
+                    12,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SUFyB",
+                      "name": "phoneAppTitle",
+                      "fill": "#191F28",
+                      "content": "투자MBTI테스트",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aSCZJ",
+                  "name": "phoneHero",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    60,
+                    20,
+                    20,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rKmBP",
+                      "name": "phoneHeroSub",
+                      "fill": "#191F28",
+                      "content": "나는 어떤 스타일의\n투자자일까요?",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 17,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "t5zwG",
+                      "name": "phoneHeroDesc",
+                      "fill": "#8B95A1",
+                      "content": "성향을 알아보고,\n다양한 분석 도구를 만나보세요",
+                      "lineHeight": 1.5,
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "oufl5",
+                      "name": "heroSpacer",
+                      "width": 10,
+                      "height": 16
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hEApD",
+                      "name": "phoneHeroCta",
+                      "width": "fill_container",
+                      "height": 40,
+                      "fill": "#3182F6",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fPB9K",
+                          "name": "phoneCtaLabel",
+                          "fill": "#FFFFFF",
+                          "content": "내 투자 성향 알아보기",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nE1T2",
+                  "name": "phoneSections",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": [
+                    24,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "8TSBp",
+                      "name": "phoneSec1",
+                      "width": "fill_container",
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "6mNIQ",
+                          "name": "s1Title",
+                          "fill": "#191F28",
+                          "content": "보조지표 도감",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "5vNtm",
+                          "name": "s1Link",
+                          "fill": "#3182F6",
+                          "content": "다양한 분석 도구를 알아보세요 →",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "s0TaS",
+                      "name": "phoneSec2",
+                      "width": "fill_container",
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "F2uyt",
+                          "name": "s2Title",
+                          "fill": "#191F28",
+                          "content": "나의 학습 현황",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "tA5UG",
+                          "name": "progTrack",
+                          "width": "fill_container",
+                          "height": 5,
+                          "fill": "#E5E8EB",
+                          "cornerRadius": 3,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "jA00D",
+                              "name": "progFill",
+                              "width": 80,
+                              "height": 5,
+                              "fill": "#3182F6",
+                              "cornerRadius": 3
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "tMQQC",
+                          "name": "s2Link",
+                          "fill": "#3182F6",
+                          "content": "학습 진행률 확인하기 →",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eKF5y",
+                      "name": "phoneDisclaimer",
+                      "width": "fill_container",
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 10,
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "C4Qwy",
+                          "fill": "#6B7684",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "이 콘텐츠는 교육 목적의 정보 제공이며, 투자 판단의 근거로 사용할 수 없어요. 투자에 대한 최종 결정과 책임은 본인에게 있어요.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 9,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "loSO0",
+      "x": 0,
+      "y": 1628,
+      "name": "스크린샷1 - 홈",
+      "clip": true,
+      "width": 636,
+      "height": 1048,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "02sxC",
+          "name": "statusBar1",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            14,
+            28
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "YM1P4",
+              "name": "time1",
+              "fill": "#191F28",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 17,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "VO1X4",
+              "name": "icons1",
+              "fill": "#191F28",
+              "content": "●●●",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "R9XRJ",
+          "name": "header1",
+          "width": "fill_container",
+          "height": 48,
+          "padding": [
+            0,
+            26
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "VGbOi",
+              "name": "headerTitle",
+              "fill": "#191F28",
+              "content": "투자MBTI테스트",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "lDyud",
+          "name": "homeMain",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            0,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "Bkhtv",
+              "name": "hero",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "padding": [
+                80,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "TNlae",
+                  "name": "heroSubtitle",
+                  "fill": "#191F28",
+                  "content": "나의 투자 성향",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "r4oiv",
+                  "name": "heroEmojiSpacer",
+                  "width": 10,
+                  "height": 12
+                },
+                {
+                  "type": "frame",
+                  "id": "ZDrBj",
+                  "name": "heroEmojiFrame",
+                  "width": 48,
+                  "height": 48,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/generated-1772544576545.png",
+                    "mode": "fill"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "jKGR3",
+                  "name": "heroEmojiSpacer2",
+                  "width": 10,
+                  "height": 8
+                },
+                {
+                  "type": "text",
+                  "id": "btuFl",
+                  "name": "heroName",
+                  "fill": "#191F28",
+                  "content": "철벽 원칙주의자",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "jZuoW",
+                  "name": "heroMbtiSpacer",
+                  "width": 10,
+                  "height": 4
+                },
+                {
+                  "type": "text",
+                  "id": "se8gr",
+                  "name": "heroMbti",
+                  "fill": "#6B7684",
+                  "content": "ISTJ 스타일",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "21QL9",
+                  "name": "btnSpacer",
+                  "width": 10,
+                  "height": 24
+                },
+                {
+                  "type": "frame",
+                  "id": "xrTvk",
+                  "name": "btnRow",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "3Zz0e",
+                      "name": "btn1",
+                      "width": "fill_container",
+                      "height": 52,
+                      "fill": "#3182F6",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "1gBT9",
+                          "name": "btn1Text",
+                          "fill": "#FFFFFF",
+                          "content": "결과 다시 보기",
+                          "fontFamily": "Inter",
+                          "fontSize": 17,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ibZDX",
+                      "name": "btn2",
+                      "width": "fill_container",
+                      "height": 52,
+                      "fill": "#F2F4F6",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "F5FnK",
+                          "name": "btn2Text",
+                          "fill": "#191F28",
+                          "content": "다시 테스트하기",
+                          "fontFamily": "Inter",
+                          "fontSize": 17,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0ET63",
+              "name": "sectionSpacer",
+              "width": 10,
+              "height": 32
+            },
+            {
+              "type": "frame",
+              "id": "yrPFp",
+              "name": "sec1",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "padding": [
+                16,
+                20
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "d9qGc",
+                  "name": "textsFrame1",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "asiJ7",
+                      "name": "sec1Title",
+                      "fill": "#191F28",
+                      "content": "보조지표 도감",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "0P2Nx",
+                      "name": "sec1Link",
+                      "fill": "#6B7684",
+                      "content": "다양한 분석 도구를 알아보세요",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "aOtDB",
+                  "name": "arrow1",
+                  "fill": "#8B95A1",
+                  "content": "›",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Mrgml",
+              "name": "sectionSpacer2",
+              "width": 10,
+              "height": 32
+            },
+            {
+              "type": "frame",
+              "id": "Cc7zk",
+              "name": "sec2",
+              "width": "fill_container",
+              "fill": "#F9FAFB",
+              "cornerRadius": 16,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "TIIMZ",
+                  "name": "sec2Title",
+                  "fill": "#191F28",
+                  "content": "나의 학습 현황",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "lQ15k",
+                  "name": "progItem",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jdoUA",
+                      "name": "progLabel",
+                      "fill": "#8B95A1",
+                      "textGrowth": "fixed-width",
+                      "width": 76,
+                      "content": "도감 학습",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ZHK49",
+                      "name": "progTrack",
+                      "width": "fill_container",
+                      "height": 6,
+                      "fill": "#E5E8EB",
+                      "cornerRadius": 3,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "pLG7c",
+                          "name": "progFill",
+                          "width": 120,
+                          "height": 6,
+                          "fill": "#3182F6",
+                          "cornerRadius": 3
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "LKpox",
+                      "name": "progValue",
+                      "fill": "#191F28",
+                      "textGrowth": "fixed-width",
+                      "width": 52,
+                      "content": "12/37",
+                      "textAlign": "right",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "8tWnn",
+                  "name": "progBtn1",
+                  "fill": "#E8F3FF",
+                  "cornerRadius": 16,
+                  "padding": [
+                    6,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XYLMj",
+                      "name": "progBtnText1",
+                      "fill": "#3182F6",
+                      "content": "학습 진행률 확인하기",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0NPGA",
+              "name": "disclaimerSpacer",
+              "width": 10,
+              "height": 24
+            },
+            {
+              "type": "frame",
+              "id": "0unec",
+              "name": "disclaimer1",
+              "width": "fill_container",
+              "fill": "#F9FAFB",
+              "cornerRadius": 12,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "pnF9w",
+                  "fill": "#6B7684",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "이 콘텐츠는 교육 목적의 정보 제공이며, 투자 판단의 근거로 사용할 수 없어요. 투자에 대한 최종 결정과 책임은 본인에게 있어요.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "DTZPr",
+      "x": 735,
+      "y": 1628,
+      "name": "스크린샷2 - 테스트",
+      "clip": true,
+      "width": 636,
+      "height": 1048,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "SA6fL",
+          "name": "statusBar2",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            14,
+            28
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "hqdov",
+              "name": "time2",
+              "fill": "#191F28",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 17,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "BH8l2",
+              "name": "icons2",
+              "fill": "#191F28",
+              "content": "●●●",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "J8Dxn",
+          "name": "testHeader",
+          "width": "fill_container",
+          "height": 48,
+          "padding": [
+            0,
+            20
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "xQba0",
+              "name": "back2new",
+              "fill": "#191F28",
+              "content": "‹",
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "te9Nv",
+              "name": "testCounter",
+              "fill": "#6B7684",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "7 / 12",
+              "textAlign": "right",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "K6B1e",
+          "name": "testProgress",
+          "width": "fill_container",
+          "height": 2,
+          "fill": "#E5E8EB",
+          "children": [
+            {
+              "type": "frame",
+              "id": "MdkoT",
+              "name": "testProgressFill",
+              "width": 371,
+              "height": 2,
+              "fill": "#3182F6",
+              "cornerRadius": 1
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OuYgm",
+          "name": "testMain",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            40,
+            20
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "lhtJR",
+              "name": "testQuestion",
+              "fill": "#191F28",
+              "textGrowth": "fixed-width",
+              "width": 550,
+              "content": "보유 종목이 급락했어요.\n나의 첫 반응은?",
+              "lineHeight": 1.5,
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "MIc88",
+              "name": "testOptions",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "MeT4v",
+                  "name": "opt1",
+                  "width": "fill_container",
+                  "fill": "#F9FAFB",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "#E5E8EB"
+                  },
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "iRHdG",
+                      "name": "opt1Text",
+                      "fill": "#191F28",
+                      "textGrowth": "fixed-width",
+                      "width": 500,
+                      "content": "하락 원인을 분석하고 데이터를 확인해요",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IHfWx",
+                  "name": "opt2",
+                  "width": "fill_container",
+                  "fill": "#F9FAFB",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "#E5E8EB"
+                  },
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DQdAI",
+                      "name": "opt2Text",
+                      "fill": "#191F28",
+                      "textGrowth": "fixed-width",
+                      "width": 500,
+                      "content": "불안하고 걱정이 먼저 들어요",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Xxsbo",
+      "x": 1472,
+      "y": 1628,
+      "name": "스크린샷3 - 결과",
+      "clip": true,
+      "width": 636,
+      "height": 1048,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "EscZ8",
+          "name": "statusBar3",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            14,
+            28
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "BzBJ9",
+              "name": "time3",
+              "fill": "#191F28",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 17,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "zleGP",
+              "name": "icons3",
+              "fill": "#191F28",
+              "content": "●●●",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "luT5Q",
+          "name": "pageHeader3",
+          "width": "fill_container",
+          "height": 48,
+          "padding": [
+            0,
+            20
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "jzoVa",
+              "name": "back3",
+              "fill": "#191F28",
+              "content": "‹",
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "CdNIy",
+              "name": "headerTitle3",
+              "fill": "#191F28",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "테스트 결과",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "psTx0",
+              "name": "spacer3",
+              "width": 28,
+              "height": 1
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "642ZU",
+          "name": "resMain",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            0,
+            26
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "Oe0vd",
+              "name": "resType",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                20,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ubzV8",
+                  "name": "resEmojiFrame",
+                  "width": 56,
+                  "height": 56,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/generated-1772544551482.png",
+                    "mode": "fill"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "D3rae",
+                  "name": "resSpacer1",
+                  "width": 10,
+                  "height": 12
+                },
+                {
+                  "type": "text",
+                  "id": "9OmaV",
+                  "name": "resName",
+                  "fill": "#191F28",
+                  "content": "철벽 원칙주의자",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "z2eIG",
+                  "name": "mbtiBadge",
+                  "fill": "#E8F3FF",
+                  "cornerRadius": 12,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GAqo6",
+                      "name": "mbtiBadgeText",
+                      "fill": "#3182F6",
+                      "content": "ISTJ 스타일",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "1dnQi",
+                  "name": "resSpacer2",
+                  "width": 10,
+                  "height": 8
+                },
+                {
+                  "type": "text",
+                  "id": "9ZjVr",
+                  "name": "resDesc",
+                  "fill": "#191F28",
+                  "textGrowth": "fixed-width",
+                  "width": 500,
+                  "content": "정해진 규칙과 데이터를 기반으로 흔들리지 않아요",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SB0p9",
+              "name": "traitSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lBKq6",
+                  "name": "traitTitle",
+                  "fill": "#191F28",
+                  "content": "이런 특징이 있어요",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "1pbXO",
+                  "name": "traitList",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "mW6Dk",
+                      "name": "t1",
+                      "width": "fill_container",
+                      "gap": 4,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "SSxJh",
+                          "name": "t1Dot",
+                          "fill": "#3182F6",
+                          "content": "•",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Mb0ij",
+                          "name": "t1Text",
+                          "fill": "#191F28",
+                          "textGrowth": "fixed-width",
+                          "width": 500,
+                          "content": "규칙과 원칙을 중요하게 생각해요",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "L9LHA",
+                      "name": "t2",
+                      "width": "fill_container",
+                      "gap": 4,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "LqoZe",
+                          "name": "t2Dot",
+                          "fill": "#3182F6",
+                          "content": "•",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "vLi2f",
+                          "name": "t2Text",
+                          "fill": "#191F28",
+                          "textGrowth": "fixed-width",
+                          "width": 500,
+                          "content": "데이터를 꼼꼼히 확인하고 기록을 남기는 편이에요",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0ThzQ",
+                      "name": "t3",
+                      "width": "fill_container",
+                      "gap": 4,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "SI2Kr",
+                          "name": "t3Dot",
+                          "fill": "#3182F6",
+                          "content": "•",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "dhDc0",
+                          "name": "t3Text",
+                          "fill": "#191F28",
+                          "textGrowth": "fixed-width",
+                          "width": 500,
+                          "content": "감정에 휘둘리지 않고 냉정하게 판단해요",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rbHAY",
+                      "name": "t4",
+                      "width": "fill_container",
+                      "gap": 4,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "VKAZd",
+                          "name": "t4Dot",
+                          "fill": "#3182F6",
+                          "content": "•",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sP4j1",
+                          "name": "t4Text",
+                          "fill": "#191F28",
+                          "textGrowth": "fixed-width",
+                          "width": 500,
+                          "content": "검증된 방법을 선호하고 새로운 건 신중히 받아들여요",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "PVrni",
+              "name": "cautionSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vxGfh",
+                  "name": "cautionTitle",
+                  "fill": "#191F28",
+                  "content": "이런 점은 주의하면 좋겠대요",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "OVDMo",
+                  "name": "cautionList",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "4TFsS",
+                      "name": "c1",
+                      "width": "fill_container",
+                      "gap": 4,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "mQHnO",
+                          "name": "c1d",
+                          "fill": "#F97316",
+                          "content": "•",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "DcYfy",
+                          "name": "c1t",
+                          "fill": "#191F28",
+                          "textGrowth": "fixed-width",
+                          "width": 500,
+                          "content": "너무 경직되면 변화에 대응이 늦을 수 있어요",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "9KtBO",
+                      "name": "c2",
+                      "width": "fill_container",
+                      "gap": 4,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "PyrCk",
+                          "name": "c2d",
+                          "fill": "#F97316",
+                          "content": "•",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "lGqhy",
+                          "name": "c2t",
+                          "fill": "#191F28",
+                          "textGrowth": "fixed-width",
+                          "width": 500,
+                          "content": "가끔은 큰 그림도 살펴보면 좋대요",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ePMP9",
+              "name": "toolSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GnJiO",
+                  "name": "toolTitle",
+                  "fill": "#191F28",
+                  "content": "이런 분석 도구에 관심이 많대요",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "39dNN",
+                  "name": "toolChips",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "iF7QM",
+                      "name": "chip1",
+                      "fill": "#E8F3FF",
+                      "cornerRadius": 20,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "2fPdI",
+                          "name": "chip1t",
+                          "fill": "#3182F6",
+                          "content": "이동평균선",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KPELI",
+                      "name": "chip2",
+                      "fill": "#E8F3FF",
+                      "cornerRadius": 20,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "hYcqS",
+                          "name": "chip2t",
+                          "fill": "#3182F6",
+                          "content": "RSI",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "HHXm2",
+                      "name": "chip3",
+                      "fill": "#E8F3FF",
+                      "cornerRadius": 20,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "tY1gf",
+                          "name": "chip3t",
+                          "fill": "#3182F6",
+                          "content": "거래량이동평균",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aMBKx",
+                  "name": "toolChips2",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ZngIg",
+                      "name": "chip4",
+                      "fill": "#E8F3FF",
+                      "cornerRadius": 20,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nvOii",
+                          "name": "chip4t",
+                          "fill": "#3182F6",
+                          "content": "지지저항선",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xFlUv",
+                      "name": "chip5",
+                      "fill": "#E8F3FF",
+                      "cornerRadius": 20,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "u1DJr",
+                          "name": "chip5t",
+                          "fill": "#3182F6",
+                          "content": "도지",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "JyANg",
+                      "name": "chip6",
+                      "fill": "#E8F3FF",
+                      "cornerRadius": 20,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ItLDO",
+                          "name": "chip6t",
+                          "fill": "#3182F6",
+                          "content": "더블탑",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "IELfk",
+              "name": "compatSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IODmc",
+                  "name": "compatTitle",
+                  "fill": "#191F28",
+                  "content": "성향 궁합",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "X31HJ",
+                  "name": "compatGood",
+                  "fill": "#191F28",
+                  "content": "🤝 잘 맞는 성향: ESTJ 체계적 관리자",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Bk1Cr",
+                  "name": "compatComp",
+                  "fill": "#191F28",
+                  "content": "🔄 보완이 되는 성향: ENFP 트렌드 탐험가",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "jNmEp",
+                  "name": "compatBtn",
+                  "fill": "#E8F3FF",
+                  "cornerRadius": 16,
+                  "padding": [
+                    6,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2njCg",
+                      "name": "compatBtnText",
+                      "fill": "#3182F6",
+                      "content": "궁합 자세히 보기",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "3UTBq",
+              "name": "actions",
+              "width": "fill_container",
+              "gap": 8,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "PUSTx",
+                  "name": "encBtn",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#F2F4F6",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6CiOg",
+                      "name": "encBtnText",
+                      "fill": "#191F28",
+                      "content": "도감 보러가기",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2DOec",
+                  "name": "shareBtn",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#3182F6",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "oMYK2",
+                      "name": "shareBtnText",
+                      "fill": "#FFFFFF",
+                      "content": "결과 공유하기",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "mrZjl",
+      "x": 2209,
+      "y": 1628,
+      "name": "스크린샷4 - 퀴즈",
+      "clip": true,
+      "width": 636,
+      "height": 1048,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "4TiL1",
+          "name": "statusBar4",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            14,
+            28
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "GrNHv",
+              "name": "time4",
+              "fill": "#191F28",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 17,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "ziKD5",
+              "name": "icons4",
+              "fill": "#191F28",
+              "content": "●●●",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ezd6l",
+          "name": "pageHeader4",
+          "width": "fill_container",
+          "height": 48,
+          "padding": [
+            0,
+            20
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "wXmBw",
+              "name": "back4",
+              "fill": "#191F28",
+              "content": "‹",
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Yyq1a",
+              "name": "headerTitle4",
+              "fill": "#191F28",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "퀴즈",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "fd2oO",
+              "name": "spacer4",
+              "width": 28,
+              "height": 1
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Htas9",
+          "name": "quizMain",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 28,
+          "padding": [
+            32,
+            20
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "z4QvM",
+              "name": "quizQuestion",
+              "fill": "#191F28",
+              "textGrowth": "fixed-width",
+              "width": 550,
+              "content": "RSI에서 70 이상 구간을\n뭐라고 부르나요?",
+              "lineHeight": 1.5,
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "pQiNx",
+              "name": "quizOptions",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "UtNaO",
+                  "name": "opt1Wrong",
+                  "width": "fill_container",
+                  "fill": "#F9FAFB",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "#E5E8EB"
+                  },
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Lm5Ax",
+                      "name": "opt1text",
+                      "fill": "#8B95A1",
+                      "content": "과매도 구간",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bMgmE",
+                  "name": "opt2Correct",
+                  "width": "fill_container",
+                  "fill": "#E8F5E9",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "#30B050"
+                  },
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kgl4H",
+                      "name": "opt2text",
+                      "fill": "#30B050",
+                      "content": "과매수 구간",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NDkv2",
+                  "name": "opt3Wrong",
+                  "width": "fill_container",
+                  "fill": "#F9FAFB",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "#E5E8EB"
+                  },
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UPUYQ",
+                      "name": "opt3text",
+                      "fill": "#8B95A1",
+                      "content": "추세 전환 구간",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fqnJ8",
+                  "name": "opt4Wrong",
+                  "width": "fill_container",
+                  "fill": "#F9FAFB",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "#E5E8EB"
+                  },
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "WLWrF",
+                      "name": "opt4text",
+                      "fill": "#8B95A1",
+                      "content": "횡보 구간",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "dyA9q",
+              "name": "quizFeedback",
+              "width": "fill_container",
+              "fill": "#E8F5E9",
+              "cornerRadius": 16,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                20,
+                24
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SgSKw",
+                  "name": "fbTitle",
+                  "fill": "#30B050",
+                  "content": "정답이에요!",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "lIllO",
+                  "name": "fbExplain",
+                  "fill": "#4E5968",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "RSI 70 이상은 과매수, 30 이하는 과매도 구간이라고 불러요.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OIcpo",
+              "name": "quizBackBtn",
+              "width": "fill_container",
+              "height": 48,
+              "fill": "#F2F4F6",
+              "cornerRadius": 16,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "8GwxS",
+                  "name": "backBtnText",
+                  "fill": "#4E5968",
+                  "content": "도감으로 돌아가기",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "wwV60",
+      "x": 2946,
+      "y": 1628,
+      "name": "스크린샷5 - 홈(첫이용)",
+      "clip": true,
+      "width": 636,
+      "height": 1048,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "5I7IG",
+          "name": "statusBar5",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            14,
+            28
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "jkTHX",
+              "name": "time5",
+              "fill": "#191F28",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 17,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "s3keu",
+              "name": "icons5",
+              "fill": "#191F28",
+              "content": "●●●",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "948dD",
+          "name": "header5",
+          "width": "fill_container",
+          "height": 48,
+          "padding": [
+            0,
+            26
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "WiJB5",
+              "name": "headerTitle5",
+              "fill": "#191F28",
+              "content": "투자MBTI테스트",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "0Qz56",
+          "name": "homeMain5",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            0,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "1VeLi",
+              "name": "hero5",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "padding": [
+                80,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "oWzGY",
+                  "name": "heroSubtitle5",
+                  "fill": "#191F28",
+                  "content": "나는 어떤 스타일의",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "2pew0",
+                  "name": "heroSubtitle5b",
+                  "fill": "#191F28",
+                  "content": "투자자일까요?",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "DnVUu",
+                  "name": "heroSpacer1",
+                  "width": 10,
+                  "height": 12
+                },
+                {
+                  "type": "text",
+                  "id": "ZYS7V",
+                  "name": "heroDesc5",
+                  "fill": "#6B7684",
+                  "content": "성향을 알아보고, 다양한 분석 도구를 만나보세요",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "HVeiG",
+                  "name": "heroSpacer2",
+                  "width": 10,
+                  "height": 24
+                },
+                {
+                  "type": "frame",
+                  "id": "RXvnO",
+                  "name": "ctaBtn5",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#3182F6",
+                  "cornerRadius": 12,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "8CiP2",
+                      "name": "ctaBtnText",
+                      "fill": "#FFFFFF",
+                      "content": "내 투자 성향 알아보기",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xQgVB",
+              "name": "sectionSpacer5",
+              "width": 10,
+              "height": 32
+            },
+            {
+              "type": "frame",
+              "id": "p9crW",
+              "name": "sec1_5",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "padding": [
+                16,
+                20
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "f2ZrO",
+                  "name": "textsFrame5",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6DWUn",
+                      "name": "sec1Title5",
+                      "fill": "#191F28",
+                      "content": "보조지표 도감",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "0DNBB",
+                      "name": "sec1Link5",
+                      "fill": "#6B7684",
+                      "content": "다양한 분석 도구를 알아보세요",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "VAXOD",
+                  "name": "arrow5",
+                  "fill": "#8B95A1",
+                  "content": "›",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jJq5g",
+              "name": "sectionSpacer5b",
+              "width": 10,
+              "height": 32
+            },
+            {
+              "type": "frame",
+              "id": "qOj61",
+              "name": "sec2_5",
+              "width": "fill_container",
+              "fill": "#F9FAFB",
+              "cornerRadius": 16,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Qa7iz",
+                  "name": "sec2Title5",
+                  "fill": "#191F28",
+                  "content": "나의 학습 현황",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "msd3W",
+                  "name": "progItem5",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lqalc",
+                      "name": "progLabel",
+                      "fill": "#4E5968",
+                      "content": "도감 학습",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BuarX",
+                      "name": "progTrack5",
+                      "width": "fill_container",
+                      "height": 6,
+                      "fill": "#E5E8EB",
+                      "cornerRadius": 3
+                    },
+                    {
+                      "type": "text",
+                      "id": "r9q4d",
+                      "name": "progValue",
+                      "fill": "#8B95A1",
+                      "content": "0/37",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nyDxP",
+                  "name": "progBtn5",
+                  "fill": "#E8F3FF",
+                  "cornerRadius": 16,
+                  "padding": [
+                    6,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RBnoh",
+                      "name": "progBtnText5",
+                      "fill": "#3182F6",
+                      "content": "학습 진행률 확인하기",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "3ugPO",
+              "name": "disclaimerSpacer5",
+              "width": 10,
+              "height": 24
+            },
+            {
+              "type": "frame",
+              "id": "1nFxH",
+              "name": "disclaimer5",
+              "width": "fill_container",
+              "fill": "#F9FAFB",
+              "cornerRadius": 12,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "UBUAX",
+                  "fill": "#6B7684",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "이 콘텐츠는 교육 목적의 정보 제공이며, 투자 판단의 근거로 사용할 수 없어요. 투자에 대한 최종 결정과 책임은 본인에게 있어요.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "TpN4I",
+      "x": 0,
+      "y": 2776,
+      "name": "가로형 스크린샷 (1504x741)",
+      "clip": true,
+      "width": 1504,
+      "height": 741,
+      "fill": "#F2F4F6",
+      "gap": 20,
+      "padding": [
+        30,
+        60
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "P7hh9",
+          "name": "wideScreen1",
+          "clip": true,
+          "width": 413,
+          "height": 681,
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "LPuaF",
+              "name": "sb1",
+              "width": "fill_container",
+              "height": 44,
+              "padding": [
+                12,
+                22
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "5CWGf",
+                  "name": "sb1t",
+                  "fill": "#191F28",
+                  "content": "9:41",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "0jzhR",
+                  "name": "sb1i",
+                  "fill": "#191F28",
+                  "content": "●●●",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "I5maL",
+              "name": "hd1",
+              "width": "fill_container",
+              "height": 36,
+              "padding": [
+                0,
+                18
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Zujpf",
+                  "name": "hd1t",
+                  "fill": "#191F28",
+                  "content": "투자MBTI테스트",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vrBif",
+              "name": "hero1",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "padding": [
+                36,
+                14,
+                14,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CoXbn",
+                  "name": "hero1sub",
+                  "fill": "#191F28",
+                  "content": "나의 투자 성향",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "HHcxe",
+                  "name": "hero1sp",
+                  "width": 10,
+                  "height": 8
+                },
+                {
+                  "type": "frame",
+                  "id": "eLgRs",
+                  "name": "hero1emoji",
+                  "width": 36,
+                  "height": 36,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/generated-1772546528095.png",
+                    "mode": "fill"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "Rt2eG",
+                  "name": "hero1sp2",
+                  "width": 10,
+                  "height": 4
+                },
+                {
+                  "type": "text",
+                  "id": "Sf5Hw",
+                  "name": "hero1name",
+                  "fill": "#191F28",
+                  "content": "철벽 원칙주의자",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "FOFTI",
+                  "name": "hero1mbti",
+                  "fill": "#6B7684",
+                  "content": "ISTJ 스타일",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "9pkTI",
+                  "name": "btnRow",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "6FO5p",
+                      "name": "btn1",
+                      "width": "fill_container",
+                      "height": 34,
+                      "fill": "#3182F6",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "0eN3J",
+                          "name": "btn1t",
+                          "fill": "#FFFFFF",
+                          "content": "결과 다시 보기",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XZvQl",
+                      "name": "btn2",
+                      "width": "fill_container",
+                      "height": 34,
+                      "fill": "#F2F4F6",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZLscx",
+                          "name": "btn2t",
+                          "fill": "#4E5968",
+                          "content": "다시 테스트하기",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "2EKEd",
+              "name": "sp1",
+              "width": 10,
+              "height": 20
+            },
+            {
+              "type": "frame",
+              "id": "5OyPA",
+              "name": "sec1",
+              "width": "fill_container",
+              "fill": "#F9FAFB",
+              "cornerRadius": 12,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                14,
+                18
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Zbzij",
+                  "name": "sec1t",
+                  "fill": "#191F28",
+                  "content": "보조지표 도감",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "WRVm7",
+                  "name": "sec1l",
+                  "fill": "#3182F6",
+                  "content": "다양한 분석 도구를 알아보세요 →",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KwsIE",
+              "name": "sp2",
+              "width": 10,
+              "height": 12
+            },
+            {
+              "type": "frame",
+              "id": "ySFDy",
+              "name": "sec2",
+              "width": "fill_container",
+              "fill": "#F9FAFB",
+              "cornerRadius": 12,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                14,
+                18
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "jQA3M",
+                  "name": "sec2t",
+                  "fill": "#191F28",
+                  "content": "나의 학습 현황",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "znVag",
+                  "name": "sec2l",
+                  "fill": "#3182F6",
+                  "content": "학습 진행률 확인하기 →",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PTPX9",
+          "name": "wideScreen2",
+          "clip": true,
+          "width": 413,
+          "height": 681,
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "I2MUw",
+              "name": "sb2",
+              "width": "fill_container",
+              "height": 44,
+              "padding": [
+                12,
+                22
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "qajUh",
+                  "name": "sb2t",
+                  "fill": "#191F28",
+                  "content": "9:41",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "IxR1R",
+                  "name": "sb2i",
+                  "fill": "#191F28",
+                  "content": "●●●",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Y49rm",
+              "name": "hd2",
+              "width": "fill_container",
+              "height": 36,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "cssZd",
+                  "name": "hd2b",
+                  "fill": "#191F28",
+                  "content": "‹",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "BbkOr",
+                  "name": "hd2c",
+                  "fill": "#6B7684",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "7 / 12",
+                  "textAlign": "right",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "NFnnu",
+              "name": "prog2",
+              "width": "fill_container",
+              "height": 3,
+              "fill": "#E5E8EB",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fMo1e",
+                  "name": "progFill",
+                  "width": 240,
+                  "height": 3,
+                  "fill": "#3182F6",
+                  "cornerRadius": 2
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SO3Cq",
+              "name": "main2",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 28,
+              "padding": [
+                28,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "9QHbT",
+                  "name": "q2",
+                  "fill": "#191F28",
+                  "textGrowth": "fixed-width",
+                  "width": 360,
+                  "content": "보유 종목이 급락했어요.\n나의 첫 반응은?",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "IDFLG",
+                  "name": "opts2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "BFWWV",
+                      "name": "o2a",
+                      "width": "fill_container",
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "thickness": 2,
+                        "fill": "#E5E8EB"
+                      },
+                      "padding": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "qSwUB",
+                          "name": "o2at",
+                          "fill": "#191F28",
+                          "content": "일단 뉴스부터 찾아볼래요",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "1MmgI",
+                      "name": "o2b",
+                      "width": "fill_container",
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "thickness": 2,
+                        "fill": "#E5E8EB"
+                      },
+                      "padding": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "KNsk4",
+                          "name": "o2bt",
+                          "fill": "#191F28",
+                          "content": "차트를 먼저 확인해볼래요",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "EVdsp",
+                      "name": "o2c",
+                      "width": "fill_container",
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "thickness": 2,
+                        "fill": "#E5E8EB"
+                      },
+                      "padding": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nI3ot",
+                          "name": "o2ct",
+                          "fill": "#191F28",
+                          "content": "손절 기준을 정해뒀으니 따를래요",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eKD5I",
+                      "name": "o2d",
+                      "width": "fill_container",
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "thickness": 2,
+                        "fill": "#E5E8EB"
+                      },
+                      "padding": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "O9htz",
+                          "name": "o2dt",
+                          "fill": "#191F28",
+                          "content": "장기 투자니까 기다려볼래요",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "P6Ssf",
+          "name": "wideScreen3",
+          "clip": true,
+          "width": 413,
+          "height": 681,
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "tDvt2",
+              "name": "sb3",
+              "width": "fill_container",
+              "height": 44,
+              "padding": [
+                12,
+                22
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "eucJ6",
+                  "name": "sb3t",
+                  "fill": "#191F28",
+                  "content": "9:41",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "uFTFX",
+                  "name": "sb3i",
+                  "fill": "#191F28",
+                  "content": "●●●",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fpnuG",
+              "name": "hd3",
+              "width": "fill_container",
+              "height": 36,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "C6SEj",
+                  "name": "hd3b",
+                  "fill": "#191F28",
+                  "content": "‹",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "ncz6s",
+                  "name": "hd3t",
+                  "fill": "#191F28",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "테스트 결과",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "msamj",
+                  "name": "hd3sp",
+                  "width": 20,
+                  "height": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "HF26z",
+              "name": "resBody",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "padding": [
+                0,
+                18
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "iJWzP",
+                  "name": "resTop",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    16,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "0WFIf",
+                      "name": "resEmoji",
+                      "width": 44,
+                      "height": 44,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1772546583852.png",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "v3W4Q",
+                      "name": "resSp",
+                      "width": 10,
+                      "height": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "Q03Nr",
+                      "name": "resName",
+                      "fill": "#191F28",
+                      "content": "철벽 원칙주의자",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fFOs0",
+                      "name": "resMbti",
+                      "fill": "#6B7684",
+                      "content": "ISTJ 스타일",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "QK2fO",
+                      "name": "resSp2",
+                      "width": 10,
+                      "height": 4
+                    },
+                    {
+                      "type": "text",
+                      "id": "jVQoP",
+                      "name": "resDesc",
+                      "fill": "#191F28",
+                      "textGrowth": "fixed-width",
+                      "width": 300,
+                      "content": "정해진 규칙과 데이터를 기반으로\n흔들리지 않아요",
+                      "lineHeight": 1.5,
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2oRGt",
+                  "name": "trSec",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    12,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aiRgA",
+                      "name": "trT",
+                      "fill": "#191F28",
+                      "content": "이런 특징이 있어요",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LoTCS",
+                      "name": "tr1",
+                      "fill": "#4E5968",
+                      "content": "· 데이터와 규칙을 중시해요",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jqxOH",
+                      "name": "tr2",
+                      "fill": "#4E5968",
+                      "content": "· 감정보다 원칙을 우선해요",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Wq8tP",
+                      "name": "tr3",
+                      "fill": "#4E5968",
+                      "content": "· 꾸준하고 일관된 판단을 해요",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "brtus",
+                  "name": "caSec",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    12,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ts7AB",
+                      "name": "caT",
+                      "fill": "#191F28",
+                      "content": "이런 점은 주의하면 좋겠대요",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ETYqv",
+                      "name": "ca1",
+                      "fill": "#4E5968",
+                      "content": "· 유연성이 부족할 수 있어요",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "gZcOR",
+                      "name": "ca2",
+                      "fill": "#4E5968",
+                      "content": "· 새로운 기회를 놓칠 수 있어요",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Bzsjb",
+                  "name": "toSec",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    12,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qyqjm",
+                      "name": "toT",
+                      "fill": "#191F28",
+                      "content": "이런 분석 도구에 관심이 많대요",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "8GRiW",
+                      "name": "toChips",
+                      "width": "fill_container",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Ep4Mp",
+                          "name": "ch1",
+                          "fill": "#E8F3FF",
+                          "cornerRadius": 10,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "1eUPi",
+                              "name": "ch1t",
+                              "fill": "#3182F6",
+                              "content": "이동평균선",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "2YKsW",
+                          "name": "ch2",
+                          "fill": "#E8F3FF",
+                          "cornerRadius": 10,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "hYk1i",
+                              "name": "ch2t",
+                              "fill": "#3182F6",
+                              "content": "RSI",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qf37z",
+                          "name": "ch3",
+                          "fill": "#E8F3FF",
+                          "cornerRadius": 10,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "zfoPO",
+                              "name": "ch3t",
+                              "fill": "#3182F6",
+                              "content": "볼린저밴드",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

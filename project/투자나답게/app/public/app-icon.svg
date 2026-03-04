@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+  <!-- 배경 -->
+  <rect width="600" height="600" rx="120" fill="#3182F6"/>
+
+  <!-- 상승 차트 라인 -->
+  <path d="M120 420 L200 380 L280 340 L340 300 L400 240 L460 180" stroke="#FFFFFF" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- 차트 화살표 (상승 방향) -->
+  <path d="M430 170 L460 180 L450 210" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- 차트 막대 그래프 (하단) -->
+  <rect x="140" y="430" width="40" height="50" rx="6" fill="rgba(255,255,255,0.35)"/>
+  <rect x="210" y="410" width="40" height="70" rx="6" fill="rgba(255,255,255,0.45)"/>
+  <rect x="280" y="385" width="40" height="95" rx="6" fill="rgba(255,255,255,0.55)"/>
+  <rect x="350" y="355" width="40" height="125" rx="6" fill="rgba(255,255,255,0.65)"/>
+  <rect x="420" y="320" width="40" height="160" rx="6" fill="rgba(255,255,255,0.8)"/>
+</svg>
