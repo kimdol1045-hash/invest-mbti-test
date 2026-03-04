@@ -88,7 +88,7 @@ export default function Quiz() {
             <Paragraph
               typography="t5"
               fontWeight="bold"
-              color={isCorrect ? '#1B873F' : '#C62828'}
+              color={isCorrect ? '#138a59' : '#d22030'}
             >
               {isCorrect ? '정답이에요!' : '아쉬워요!'}
             </Paragraph>

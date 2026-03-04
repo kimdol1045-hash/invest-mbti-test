@@ -2,7 +2,6 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { TDSMobileProvider } from '@toss/tds-mobile';
-import { AuthProvider } from './contexts/AuthContext';
 import { storage } from './utils/storage';
 import App from './App';
 import './index.css';
@@ -19,9 +18,7 @@ storage.init().then(() => {
         }}
       >
         <BrowserRouter>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
+          <App />
         </BrowserRouter>
       </TDSMobileProvider>
     </StrictMode>,

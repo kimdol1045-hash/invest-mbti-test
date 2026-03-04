@@ -37,7 +37,7 @@ class ErrorBoundary extends Component<Props, State> {
             alignItems: 'center',
             justifyContent: 'center',
             minHeight: '100vh',
-            padding: '0 24px',
+            padding: '0 20px',
             textAlign: 'center',
           }}
         >
@@ -60,7 +60,7 @@ class ErrorBoundary extends Component<Props, State> {
           >
             잠시 후 다시 시도해주세요
           </p>
-          <Button variant="fill" size="large" onClick={this.handleRetry}>
+          <Button color="primary" variant="fill" size="large" onClick={this.handleRetry}>
             다시 시도하기
           </Button>
         </div>

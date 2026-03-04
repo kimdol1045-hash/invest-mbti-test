@@ -46,7 +46,7 @@ async function generateShareImage(
   try {
     const canvas = document.createElement('canvas');
     canvas.width = 600;
-    canvas.height = 440;
+    canvas.height = 460;
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
 
@@ -58,7 +58,7 @@ async function generateShareImage(
     // 상단 그라데이션 배경
     const gradient = ctx.createLinearGradient(0, 0, 600, 0);
     gradient.addColorStop(0, '#3182F6');
-    gradient.addColorStop(1, '#1B6CE5');
+    gradient.addColorStop(1, '#1b64da');
     ctx.fillStyle = gradient;
     ctx.roundRect(0, 0, 600, 170, [20, 20, 0, 0]);
     ctx.fill();
@@ -116,11 +116,16 @@ async function generateShareImage(
     ctx.lineTo(560, 395);
     ctx.stroke();
 
+    // 면책 문구
+    ctx.fillStyle = '#b0b8c1';
+    ctx.font = '400 10px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('교육 목적의 정보이며, 투자 판단의 근거로 사용할 수 없어요.', 300, 410);
+
     // 하단 CTA
     ctx.fillStyle = '#8B95A1';
     ctx.font = '400 12px -apple-system, BlinkMacSystemFont, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('나도 테스트하러 가기 → 토스에서 "투자나답게" 검색', 300, 420);
+    ctx.fillText('나도 테스트하러 가기 → 토스에서 "투자MBTI테스트" 검색', 300, 430);
 
     return new Promise((resolve) => {
       canvas.toBlob((blob) => resolve(blob), 'image/png');

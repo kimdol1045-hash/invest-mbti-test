@@ -1,10 +1,10 @@
 .test { min-height: 100vh; display: flex; flex-direction: column; }
-.test-header { display: flex; align-items: center; justify-content: space-between; height: 48px; padding: 0 20px; position: sticky; top: 0; background: #fff; z-index: 10; }
-.test-back { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: none; border: none; font-size: 24px; color: #191F28; cursor: pointer; padding: 0; margin-left: -12px; }
-.test-counter { font-size: 14px; color: #6B7684; }
+.test-header { display: flex; align-items: center; justify-content: space-between; height: 48px; padding: 0 20px; position: sticky; top: 0; background: var(--adaptiveBackground); z-index: 10; }
+.test-back { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: none; border: none; font-size: 24px; color: var(--adaptiveGrey900); cursor: pointer; padding: 0; margin-left: -12px; }
+.test-counter { font-size: 14px; color: var(--adaptiveGrey600); }
 .test-main { flex: 1; padding: 40px 20px; display: flex; flex-direction: column; }
-.test-question { font-size: 20px; font-weight: 600; color: #191F28; line-height: 1.5; margin-bottom: 32px; }
+.test-question { font-size: 20px; font-weight: 600; color: var(--adaptiveGrey900); line-height: 1.5; margin-bottom: 32px; }
 .test-options { display: flex; flex-direction: column; gap: 12px; }
-.test-option { width: 100%; padding: 20px; background: #F9FAFB; border: 2px solid #E5E8EB; border-radius: 16px; font-size: 15px; color: #191F28; cursor: pointer; text-align: left; line-height: 1.5; transition: border-color 0.2s, background-color 0.2s; }
-@media (hover: hover) { .test-option:hover { border-color: #3182F6; background: #E8F3FF; } }
-.test-option:active { border-color: #3182F6; background: #E8F3FF; }
+.test-option { width: 100%; padding: 20px; background: var(--adaptiveGrey50); border: 2px solid var(--adaptiveGrey200); border-radius: 16px; font-size: 15px; color: var(--adaptiveGrey900); cursor: pointer; text-align: left; line-height: 1.5; transition: border-color 0.2s, background-color 0.2s; }
+@media (hover: hover) { .test-option:hover { border-color: #3182F6; background: #e8f3ff; } }
+.test-option:active { border-color: #3182F6; background: #e8f3ff; }

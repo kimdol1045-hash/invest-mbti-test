@@ -12,7 +12,7 @@ function NotFound() {
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: '100vh',
-        padding: '0 24px',
+        padding: '0 20px',
         textAlign: 'center',
       }}
     >
@@ -32,7 +32,7 @@ function NotFound() {
       <Paragraph typography="t6" color="#6B7684" style={{ marginBottom: 24 }}>
         주소를 확인하고 다시 시도해주세요
       </Paragraph>
-      <Button variant="fill" size="large" onClick={() => navigate('/')}>
+      <Button color="primary" variant="fill" size="large" onClick={() => navigate('/')}>
         홈으로 돌아가기
       </Button>
     </div>

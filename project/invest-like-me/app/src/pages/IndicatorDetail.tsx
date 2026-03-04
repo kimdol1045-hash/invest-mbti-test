@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Badge, Paragraph, Button, BottomCTA } from '@toss/tds-mobile';
 import { indicators } from '../data/indicators';
@@ -6,6 +6,7 @@ import { candlePatterns } from '../data/candlePatterns';
 import { chartPatterns } from '../data/chartPatterns';
 import { storage } from '../utils/storage';
 import PageHeader from '../components/PageHeader';
+import Disclaimer from '../components/Disclaimer';
 
 const DIFFICULTY_LABEL: Record<string, string> = {
   beginner: '입문',
@@ -103,12 +104,11 @@ export default function IndicatorDetail() {
             ))}
           </ul>
         </section>
+
+        <Disclaimer />
       </main>
 
-      <BottomCTA.Single
-        fixed
-        {...({ onClick: () => navigate(`/quiz/${item.id}`) } as Pick<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>)}
-      >
+      <BottomCTA.Single fixed onClick={() => navigate(`/quiz/${item.id}`)}>
         퀴즈 풀어보기
       </BottomCTA.Single>
     </div>

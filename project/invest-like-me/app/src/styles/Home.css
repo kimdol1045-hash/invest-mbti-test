@@ -1,10 +1,10 @@
 .home { min-height: 100vh; padding-bottom: 40px; }
 .home-main { padding: 0 20px; }
 .home-hero { text-align: center; padding: 40px 0; }
-.home-subtitle { font-size: 22px; font-weight: 700; color: #191F28; margin-bottom: 8px; }
-.home-description { font-size: 15px; color: #6B7684; margin-bottom: 32px; }
+.home-subtitle { font-size: 22px; font-weight: 700; color: var(--adaptiveGrey900); margin-bottom: 8px; }
+.home-description { font-size: 15px; color: var(--adaptiveGrey600); margin-bottom: 32px; }
 .home-result-emoji { font-size: 40px; margin: 12px 0 8px; }
-.home-result-name { font-size: 20px; font-weight: 700; color: #191F28; margin-bottom: 4px; }
-.home-result-mbti { font-size: 14px; color: #6B7684; margin-bottom: 24px; }
-.home-section { margin-top: 32px; padding: 20px; background: #F9FAFB; border-radius: 16px; }
-.home-section-title { font-size: 16px; font-weight: 600; color: #191F28; margin-bottom: 12px; }
+.home-result-name { font-size: 20px; font-weight: 700; color: var(--adaptiveGrey900); margin-bottom: 4px; }
+.home-result-mbti { font-size: 14px; color: var(--adaptiveGrey600); margin-bottom: 24px; }
+.home-section { margin-top: 32px; padding: 20px; background: var(--adaptiveGrey50); border-radius: 16px; }
+.home-section-title { font-size: 16px; font-weight: 600; color: var(--adaptiveGrey900); margin-bottom: 12px; }
