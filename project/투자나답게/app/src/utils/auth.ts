@@ -20,7 +20,7 @@ const AUTH_CONFIG = {
   TOKEN_URL: '/api/auth/token',
 } as const;
 
-const STORAGE_KEY = 'invest-mbti-test:auth';
+const STORAGE_KEY = 'invest-like-me:auth';
 
 export interface AuthUser {
   accessToken: string;

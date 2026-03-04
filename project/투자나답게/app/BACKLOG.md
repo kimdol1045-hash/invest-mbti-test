@@ -15,7 +15,7 @@
 ### 1-3. appName 확인
 - **파일**: `granite.config.ts` (4번째 줄)
 - **작업**: 콘솔에 등록한 앱 ID와 `appName` 값이 동일한지 확인
-- **현재**: `appName: 'invest-mbti-test'`
+- **현재**: `appName: 'invest-like-me'`
 
 ---
 
@@ -37,7 +37,7 @@
 ### 3-1. intoss:// 딥링크 주소 확인
 - **파일**: `src/utils/share.ts` (145번째 줄)
 - **작업**: `APP_LINK` 값이 실제 콘솔 등록된 앱의 딥링크와 일치하는지 확인
-- **현재**: `intoss://miniapp?appId=invest-mbti-test`
+- **현재**: `intoss://miniapp?appId=invest-like-me`
 
 ### 3-2. 토스 네이티브 공유 API 활성화
 - **파일**: `src/utils/share.ts` (148~153번째 줄)

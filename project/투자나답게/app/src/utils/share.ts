@@ -142,7 +142,7 @@ export async function shareResult(
   personality: PersonalityType,
 ): Promise<{ success: boolean; method: string }> {
   // TODO: 콘솔 등록 후 실제 intoss:// 스킴으로 교체
-  const APP_LINK = 'intoss://miniapp?appId=invest-mbti-test';
+  const APP_LINK = 'intoss://miniapp?appId=invest-like-me';
   const shareText = `나의 투자 성향은 "${personality.name}" (${mbtiType} 스타일)이래요!\n${personality.description}\n\n나도 테스트하러 가기 → ${APP_LINK}`;
 
   // 1순위: 토스 네이티브 공유 API
