@@ -120,8 +120,8 @@ export default function Progress() {
             테스트 다시 하기
           </Button>
           <Button
-            color="dark"
-            variant="weak"
+            color="primary"
+            variant="fill"
             size="xlarge"
             display="block"
             onClick={async () => {

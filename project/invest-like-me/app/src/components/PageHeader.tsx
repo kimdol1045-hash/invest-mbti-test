@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface PageHeaderProps {
@@ -6,9 +7,16 @@ interface PageHeaderProps {
 
 export default function PageHeader({ title }: PageHeaderProps) {
   const navigate = useNavigate();
+  const [isTossEnv, setIsTossEnv] = useState(false);
 
-  // 프로덕션에서는 네이티브 NavigationBar를 사용하므로 렌더링하지 않음
-  if (!import.meta.env.DEV) {
+  useEffect(() => {
+    import('@apps-in-toss/web-framework')
+      .then(() => setIsTossEnv(true))
+      .catch(() => setIsTossEnv(false));
+  }, []);
+
+  // 토스 환경에서는 네이티브 NavigationBar 사용
+  if (isTossEnv) {
     return null;
   }
 

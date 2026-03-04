@@ -1,8 +1,6 @@
 .home { min-height: 100vh; padding-bottom: 40px; }
-.home-header { padding: 16px 20px; }
-.home-title { font-size: 20px; font-weight: 700; color: #191F28; }
 .home-main { padding: 0 20px; }
-.home-hero { text-align: center; padding: 80px 0 40px; }
+.home-hero { text-align: center; padding: 40px 0; }
 .home-subtitle { font-size: 22px; font-weight: 700; color: #191F28; margin-bottom: 8px; }
 .home-description { font-size: 15px; color: #6B7684; margin-bottom: 32px; }
 .home-result-emoji { font-size: 40px; margin: 12px 0 8px; }

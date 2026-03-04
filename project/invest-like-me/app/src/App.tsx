@@ -1,5 +1,5 @@
-import { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { lazy, Suspense, useEffect, useCallback } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingScreen from './components/LoadingScreen';
 
@@ -21,10 +21,41 @@ function ScrollToTop() {
   return null;
 }
 
+// Test 페이지 제외 - 일반 페이지 뒤로가기 처리
+function BackEventHandler() {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const handleBack = useCallback(() => {
+    navigate(-1);
+  }, [navigate]);
+
+  useEffect(() => {
+    // 홈: 리스너 없이 프레임워크 기본 동작 (종료 다이얼로그)
+    // Test: 자체 backEvent 핸들러 등록
+    if (pathname === '/' || pathname === '/test') return;
+
+    let unsubscribe: (() => void) | null = null;
+    import('@apps-in-toss/web-framework')
+      .then(({ graniteEvent }) => {
+        unsubscribe = graniteEvent.addEventListener('backEvent', {
+          onEvent: handleBack,
+          onError: () => {},
+        });
+      })
+      .catch(() => {});
+
+    return () => { unsubscribe?.(); };
+  }, [pathname, handleBack]);
+
+  return null;
+}
+
 function App() {
   return (
     <ErrorBoundary>
       <ScrollToTop />
+      <BackEventHandler />
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route path="/" element={<Home />} />

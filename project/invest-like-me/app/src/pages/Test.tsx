@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProgressBar, ConfirmDialog } from '@toss/tds-mobile';
 import { questions } from '../data/questions';
@@ -10,31 +10,44 @@ export default function Test() {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
-  const [showBackDialog, setShowBackDialog] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const navigateRef = useRef(navigate);
+  navigateRef.current = navigate;
 
   const question = questions[currentIndex];
   const progress = (currentIndex + 1) / questions.length;
 
+  // 뒤로가기 인터셉트
   useEffect(() => {
-    let unsubscription: (() => void) | null = null;
+    let backEventUnsubscribe: (() => void) | null = null;
 
+    // 1) 공식 API: graniteEvent.addEventListener('backEvent')
+    //    등록 시 네이티브 기본 history.back() 호출을 완전히 막음
     import('@apps-in-toss/web-framework')
       .then(({ graniteEvent }) => {
-        unsubscription = graniteEvent.addEventListener('backEvent', {
+        backEventUnsubscribe = graniteEvent.addEventListener('backEvent', {
           onEvent: () => {
-            setShowBackDialog(true);
+            setShowConfirm(true);
           },
-          onError: (error) => {
-            console.error(`뒤로가기 이벤트 오류: ${error}`);
-          },
+          onError: () => {},
         });
       })
       .catch(() => {
-        // 토스 환경이 아니면 무시
+        // 토스 환경이 아닌 경우 (브라우저 개발 등) popstate fallback
+        window.history.pushState({ testGuard: true }, '');
       });
 
+    // 2) Fallback: popstate (브라우저 환경 + history.back() 호출 시)
+    //    history.go(1)로 즉시 되돌려서 React Router 네비게이션 방지
+    const handlePopState = () => {
+      window.history.go(1);
+      setShowConfirm(true);
+    };
+    window.addEventListener('popstate', handlePopState);
+
     return () => {
-      unsubscription?.();
+      backEventUnsubscribe?.();
+      window.removeEventListener('popstate', handlePopState);
     };
   }, []);
 
@@ -77,20 +90,25 @@ export default function Test() {
       </main>
 
       <ConfirmDialog
-        open={showBackDialog}
+        open={showConfirm}
         title="테스트를 그만할까요?"
         description="진행 내용이 저장되지 않아요."
+        onClose={() => setShowConfirm(false)}
         cancelButton={
-          <ConfirmDialog.CancelButton onClick={() => setShowBackDialog(false)}>
+          <ConfirmDialog.CancelButton color="primary" variant="weak" onClick={() => setShowConfirm(false)}>
             계속하기
           </ConfirmDialog.CancelButton>
         }
         confirmButton={
-          <ConfirmDialog.ConfirmButton onClick={() => navigate('/', { replace: true })}>
+          <ConfirmDialog.ConfirmButton
+            onClick={() => {
+              setShowConfirm(false);
+              navigate('/', { replace: true });
+            }}
+          >
             나가기
           </ConfirmDialog.ConfirmButton>
         }
-        onClose={() => setShowBackDialog(false)}
       />
     </div>
   );

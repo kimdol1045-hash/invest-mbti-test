@@ -8,10 +8,10 @@ export default defineConfig({
     icon: '/app-icon.svg', // 콘솔 등록 후 CDN URL로 교체 필요
   },
   web: {
-    host: 'localhost',
+    host: '192.168.45.61',
     port: 5173,
     commands: {
-      dev: 'vite',
+      dev: 'vite --host',
       build: 'tsc -b && vite build',
     },
   },

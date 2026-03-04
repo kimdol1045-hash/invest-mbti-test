@@ -23,10 +23,6 @@ export default function Home() {
 
   return (
     <div className="home">
-      <header className="home-header">
-        <h1 className="home-title">투자MBTI테스트</h1>
-      </header>
-
       <main className="home-main">
         {savedPersonality ? (
           <section className="home-hero">
@@ -44,8 +40,8 @@ export default function Home() {
                 결과 다시 보기
               </Button>
               <Button
-                color="dark"
-                variant="weak"
+                color="primary"
+                variant="fill"
                 size="xlarge"
                 display="block"
                 onClick={() => navigate('/test')}
@@ -108,7 +104,7 @@ export default function Home() {
           <div style={{ marginTop: 12 }}>
             <Button
               color="primary"
-              variant="weak"
+              variant="fill"
               size="small"
               onClick={() => navigate('/progress')}
             >

@@ -6,4 +6,5 @@
 .test-question { font-size: 20px; font-weight: 600; color: #191F28; line-height: 1.5; margin-bottom: 32px; }
 .test-options { display: flex; flex-direction: column; gap: 12px; }
 .test-option { width: 100%; padding: 20px; background: #F9FAFB; border: 2px solid #E5E8EB; border-radius: 16px; font-size: 15px; color: #191F28; cursor: pointer; text-align: left; line-height: 1.5; transition: border-color 0.2s, background-color 0.2s; }
-.test-option:hover { border-color: #3182F6; background: #E8F3FF; }
+@media (hover: hover) { .test-option:hover { border-color: #3182F6; background: #E8F3FF; } }
+.test-option:active { border-color: #3182F6; background: #E8F3FF; }

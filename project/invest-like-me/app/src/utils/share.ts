@@ -133,7 +133,7 @@ async function generateShareImage(
 
 /**
  * 결과 공유
- * 1순위: 토스 네이티브 공유 API (OAuth 연동 후)
+ * 1순위: 앱인토스 네이티브 공유 API (share + getTossShareLink)
  * 2순위: Web Share API
  * 3순위: 클립보드 복사
  */
@@ -141,40 +141,27 @@ export async function shareResult(
   mbtiType: string,
   personality: PersonalityType,
 ): Promise<{ success: boolean; method: string }> {
-  // TODO: 콘솔 등록 후 실제 intoss:// 스킴으로 교체
-  const APP_LINK = 'intoss://miniapp?appId=invest-like-me';
-  const shareText = `나의 투자 성향은 "${personality.name}" (${mbtiType} 스타일)이래요!\n${personality.description}\n\n나도 테스트하러 가기 → ${APP_LINK}`;
+  const shareText = `나의 투자 성향은 "${personality.name}" (${mbtiType} 스타일)이래요!\n${personality.description}`;
 
-  // 1순위: 토스 네이티브 공유 API
-  // TODO: OAuth 연동 후 활성화
-  // if (window.TossApp?.share) {
-  //   await window.TossApp.share({ text: shareText });
-  //   return { success: true, method: 'toss' };
-  // }
+  // 1순위: 앱인토스 네이티브 공유 API
+  try {
+    const { share, getTossShareLink } = await import('@apps-in-toss/web-framework');
+    const tossLink = await getTossShareLink('intoss://invest-like-me');
+    await share({ message: `${shareText}\n\n나도 테스트하러 가기 → ${tossLink}` });
+    return { success: true, method: 'toss' };
+  } catch {
+    // 토스 환경이 아니거나 API 실패 시 폴백
+  }
 
-  // 2순위: Web Share API (모바일 브라우저 지원)
+  // 2순위: Web Share API
   if (navigator.share) {
     try {
-      const imageBlob = await generateShareImage(mbtiType, personality);
-      const shareData: ShareData = {
+      await navigator.share({
         title: `투자MBTI테스트 - ${personality.name}`,
         text: shareText,
-      };
-
-      // 이미지 파일 첨부 가능한 경우
-      if (imageBlob && navigator.canShare) {
-        const file = new File([imageBlob], 'my-invest-type.png', { type: 'image/png' });
-        const dataWithFile = { ...shareData, files: [file] };
-        if (navigator.canShare(dataWithFile)) {
-          await navigator.share(dataWithFile);
-          return { success: true, method: 'webshare-image' };
-        }
-      }
-
-      await navigator.share(shareData);
+      });
       return { success: true, method: 'webshare' };
     } catch (error) {
-      // 사용자가 공유 취소한 경우
       if (error instanceof Error && error.name === 'AbortError') {
         return { success: false, method: 'cancelled' };
       }
@@ -183,7 +170,18 @@ export async function shareResult(
 
   // 3순위: 클립보드 복사
   try {
-    await navigator.clipboard.writeText(shareText);
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(shareText);
+      return { success: true, method: 'clipboard' };
+    }
+    const textarea = document.createElement('textarea');
+    textarea.value = shareText;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
     return { success: true, method: 'clipboard' };
   } catch {
     return { success: false, method: 'none' };

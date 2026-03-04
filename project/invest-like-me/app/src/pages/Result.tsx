@@ -106,8 +106,8 @@ export default function Result() {
         fixed
         leftButton={
           <Button
-            color="dark"
-            variant="weak"
+            color="primary"
+            variant="fill"
             size="xlarge"
             display="block"
             onClick={() => navigate('/encyclopedia', { replace: true })}
@@ -118,12 +118,16 @@ export default function Result() {
         rightButton={
           <Button
             color="primary"
+            variant="fill"
             size="xlarge"
             display="block"
             onClick={async () => {
               const result = await shareResult(mbtiType, personality);
-              if (result.method === 'clipboard') {
+              if (result.success && result.method === 'clipboard') {
                 setToastText('클립보드에 복사했어요!');
+                setToastOpen(true);
+              } else if (!result.success && result.method === 'none') {
+                setToastText('공유에 실패했어요. 다시 시도해주세요.');
                 setToastOpen(true);
               }
             }}
