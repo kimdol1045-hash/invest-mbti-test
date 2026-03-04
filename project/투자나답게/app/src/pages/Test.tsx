@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProgressBar, ConfirmDialog } from '@toss/tds-mobile';
-import { graniteEvent } from '@apps-in-toss/web-framework';
 import { questions } from '../data/questions';
 import { calculateResult } from '../utils/calculateResult';
 import { storage } from '../utils/storage';
@@ -17,17 +16,25 @@ export default function Test() {
   const progress = (currentIndex + 1) / questions.length;
 
   useEffect(() => {
-    const unsubscription = graniteEvent.addEventListener('backEvent', {
-      onEvent: () => {
-        setShowBackDialog(true);
-      },
-      onError: (error) => {
-        console.error(`뒤로가기 이벤트 오류: ${error}`);
-      },
-    });
+    let unsubscription: (() => void) | null = null;
+
+    import('@apps-in-toss/web-framework')
+      .then(({ graniteEvent }) => {
+        unsubscription = graniteEvent.addEventListener('backEvent', {
+          onEvent: () => {
+            setShowBackDialog(true);
+          },
+          onError: (error) => {
+            console.error(`뒤로가기 이벤트 오류: ${error}`);
+          },
+        });
+      })
+      .catch(() => {
+        // 토스 환경이 아니면 무시
+      });
 
     return () => {
-      unsubscription();
+      unsubscription?.();
     };
   }, []);
 

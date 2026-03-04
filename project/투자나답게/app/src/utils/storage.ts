@@ -1,5 +1,3 @@
-import { Storage } from '@apps-in-toss/web-framework';
-
 const KEYS = {
   TEST_RESULT: 'invest-mbti-test:test-result',
   PROGRESS: 'invest-mbti-test:progress',
@@ -66,7 +64,26 @@ let cache = {
 
 let initialized = false;
 
-// --- 네이티브 Storage 래퍼 (localStorage 폴백 + 타임아웃) ---
+// --- 네이티브 Storage (런타임 감지, 동적 import) ---
+type NativeStorage = {
+  getItem(key: string): Promise<string | null>;
+  setItem(key: string, value: string): Promise<void>;
+  removeItem(key: string): Promise<void>;
+};
+
+let nativeStorage: NativeStorage | null = null;
+
+async function loadNativeStorage(): Promise<void> {
+  try {
+    const mod = await import('@apps-in-toss/web-framework');
+    if (mod.Storage && typeof mod.Storage.getItem === 'function') {
+      nativeStorage = mod.Storage;
+    }
+  } catch {
+    // 토스 환경이 아니면 localStorage 폴백
+  }
+}
+
 function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
   return Promise.race([
     promise,
@@ -74,47 +91,58 @@ function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
   ]);
 }
 
-async function nativeGet(key: string): Promise<string | null> {
-  try {
-    return await withTimeout(Storage.getItem(key), 1000);
-  } catch {
-    return localStorage.getItem(key);
+async function storageGet(key: string): Promise<string | null> {
+  if (nativeStorage) {
+    try {
+      return await withTimeout(nativeStorage.getItem(key), 1000);
+    } catch {
+      // 폴백
+    }
+  }
+  return localStorage.getItem(key);
+}
+
+async function storageSet(key: string, value: string): Promise<void> {
+  localStorage.setItem(key, value);
+  if (nativeStorage) {
+    try {
+      await withTimeout(nativeStorage.setItem(key, value), 1000);
+    } catch {
+      // localStorage에 이미 저장됨
+    }
   }
 }
 
-async function nativeSet(key: string, value: string): Promise<void> {
-  try {
-    await withTimeout(Storage.setItem(key, value), 1000);
-  } catch {
-    localStorage.setItem(key, value);
-  }
-}
-
-async function nativeRemove(key: string): Promise<void> {
-  try {
-    await withTimeout(Storage.removeItem(key), 1000);
-  } catch {
-    localStorage.removeItem(key);
+async function storageRemove(key: string): Promise<void> {
+  localStorage.removeItem(key);
+  if (nativeStorage) {
+    try {
+      await withTimeout(nativeStorage.removeItem(key), 1000);
+    } catch {
+      // localStorage에서 이미 제거됨
+    }
   }
 }
 
 // --- 캐시 persist 헬퍼 ---
 function persistProgress(): void {
-  nativeSet(KEYS.PROGRESS, JSON.stringify(cache.progress));
+  storageSet(KEYS.PROGRESS, JSON.stringify(cache.progress));
 }
 
 function persistBadges(): void {
-  nativeSet(KEYS.BADGES, JSON.stringify(cache.badges));
+  storageSet(KEYS.BADGES, JSON.stringify(cache.badges));
 }
 
 // --- 초기화 ---
 async function init(): Promise<void> {
   if (initialized) return;
 
+  await loadNativeStorage();
+
   const [testResult, progressRaw, badgesRaw] = await Promise.all([
-    nativeGet(KEYS.TEST_RESULT),
-    nativeGet(KEYS.PROGRESS),
-    nativeGet(KEYS.BADGES),
+    storageGet(KEYS.TEST_RESULT),
+    storageGet(KEYS.PROGRESS),
+    storageGet(KEYS.BADGES),
   ]);
 
   cache.testResult = testResult;
@@ -157,7 +185,7 @@ export const storage = {
 
   setTestResult(mbtiType: string): void {
     cache.testResult = mbtiType;
-    nativeSet(KEYS.TEST_RESULT, mbtiType);
+    storageSet(KEYS.TEST_RESULT, mbtiType);
   },
 
   getTestResult(): string | null {
@@ -194,9 +222,9 @@ export const storage = {
       badges: [],
     };
     await Promise.all([
-      nativeRemove(KEYS.TEST_RESULT),
-      nativeRemove(KEYS.PROGRESS),
-      nativeRemove(KEYS.BADGES),
+      storageRemove(KEYS.TEST_RESULT),
+      storageRemove(KEYS.PROGRESS),
+      storageRemove(KEYS.BADGES),
     ]);
   },
 };
