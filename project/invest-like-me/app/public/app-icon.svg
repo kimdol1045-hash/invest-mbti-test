@@ -1,17 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="300" y1="0" x2="300" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3182F6"/>
+      <stop offset="1" stop-color="#2272EB"/>
+    </linearGradient>
+  </defs>
+
   <!-- 배경 -->
-  <rect width="600" height="600" rx="120" fill="#3182F6"/>
+  <rect width="600" height="600" fill="url(#bg)"/>
 
-  <!-- 상승 차트 라인 -->
-  <path d="M120 420 L200 380 L280 340 L340 300 L400 240 L460 180" stroke="#FFFFFF" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-  <!-- 차트 화살표 (상승 방향) -->
-  <path d="M430 170 L460 180 L450 210" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-  <!-- 차트 막대 그래프 (하단) -->
-  <rect x="140" y="430" width="40" height="50" rx="6" fill="rgba(255,255,255,0.35)"/>
-  <rect x="210" y="410" width="40" height="70" rx="6" fill="rgba(255,255,255,0.45)"/>
-  <rect x="280" y="385" width="40" height="95" rx="6" fill="rgba(255,255,255,0.55)"/>
-  <rect x="350" y="355" width="40" height="125" rx="6" fill="rgba(255,255,255,0.65)"/>
-  <rect x="420" y="320" width="40" height="160" rx="6" fill="rgba(255,255,255,0.8)"/>
+  <!-- 4개 막대 차트 (중앙 정렬, 하단 맞춤) -->
+  <!-- bar1: #FFFFFF60, 48x90 -->
+  <rect x="161" y="380" width="48" height="90" rx="10" fill="rgba(255,255,255,0.38)"/>
+  <!-- bar2: #FFFFFF99, 48x160 -->
+  <rect x="227" y="310" width="48" height="160" rx="10" fill="rgba(255,255,255,0.6)"/>
+  <!-- bar3: #FFFFFF, 48x230 -->
+  <rect x="293" y="240" width="48" height="230" rx="10" fill="#FFFFFF"/>
+  <!-- bar4: #FFFFFF80, 48x130 -->
+  <rect x="359" y="340" width="48" height="130" rx="10" fill="rgba(255,255,255,0.5)"/>
 </svg>
