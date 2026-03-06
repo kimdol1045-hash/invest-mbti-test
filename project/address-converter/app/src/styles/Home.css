@@ -1,0 +1,113 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 32px;
+}
+
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 20px;
+}
+
+.home-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #191F28;
+}
+
+.home-history-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.home-history-btn:active {
+  background: #F2F4F6;
+}
+
+/* 히어로 배너 */
+.home-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 4px 20px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #E8F3FF 0%, #F0F0FF 100%);
+  border-radius: 16px;
+}
+
+.home-hero-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.home-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.home-hero-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #191F28;
+}
+
+.home-hero-desc {
+  font-size: 13px;
+  color: #6B7684;
+}
+
+/* 검색바 */
+.home-search-wrap {
+  padding: 16px 20px 0;
+}
+
+.home-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 16px;
+  background: #F2F4F6;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.home-search-placeholder {
+  font-size: 15px;
+  color: #B0B8C1;
+}
+
+/* 사용 팁 */
+.home-tips {
+  padding: 28px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-tips-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #191F28;
+  padding: 0 20px;
+  margin-bottom: 4px;
+}
+
+.home-tip-emoji {
+  font-size: 28px;
+  flex-shrink: 0;
+  width: 40px;
+  text-align: center;
+}
