@@ -5,7 +5,7 @@ export default defineConfig({
   brand: {
     displayName: '투자MBTI테스트',
     primaryColor: '#3182F6',
-    icon: '/app-icon.svg', // 콘솔 등록 후 CDN URL로 교체 필요
+    icon: 'https://raw.githubusercontent.com/kimdol1045-hash/invest-mbti-test/main/app/public/app-icon.svg',
   },
   web: {
     host: '192.168.45.61',
