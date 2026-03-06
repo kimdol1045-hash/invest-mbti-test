@@ -1,0 +1,9 @@
+{
+  "appName": "invest-like-me",
+  "permissions": [
+    {
+      "name": "clipboard",
+      "access": "write"
+    }
+  ]
+}

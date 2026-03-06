@@ -118,8 +118,8 @@ export default function Quiz() {
         {isAnswered && (
           <div style={{ marginTop: 24 }}>
             <Button
-              color="dark"
-              variant="weak"
+              color="primary"
+              variant="fill"
               size="xlarge"
               display="block"
               onClick={() => navigate('/encyclopedia', { replace: true })}

@@ -1,32 +1,29 @@
-import { type PersonalityType } from '../data/personalityTypes';
-
 /**
- * 결과 공유
- * 1순위: 앱인토스 네이티브 공유 API (share + getTossShareLink)
+ * 코드 값 공유
+ * 1순위: 앱인토스 네이티브 공유
  * 2순위: Web Share API
  * 3순위: 클립보드 복사
  */
-export async function shareResult(
-  mbtiType: string,
-  personality: PersonalityType,
+export async function shareCode(
+  label: string,
+  value: string,
 ): Promise<{ success: boolean; method: string }> {
-  const shareText = `나의 투자 성향은 "${personality.name}" (${mbtiType} 스타일)이래요!\n${personality.description}`;
+  const shareText = `[바로코드] ${label}\n${value}`;
 
-  // 1순위: 앱인토스 네이티브 공유 API
+  // 1순위: 앱인토스 네이티브 공유
   try {
-    const { share, getTossShareLink } = await import('@apps-in-toss/web-framework');
-    const tossLink = await getTossShareLink('intoss://invest-like-me');
-    await share({ message: `${shareText}\n\n나도 테스트하러 가기 → ${tossLink}` });
+    const { share } = await import('@apps-in-toss/web-framework');
+    await share({ message: shareText });
     return { success: true, method: 'toss' };
   } catch {
-    // 토스 환경이 아니거나 API 실패 시 폴백
+    // 폴백
   }
 
   // 2순위: Web Share API
   if (navigator.share) {
     try {
       await navigator.share({
-        title: `투자MBTI테스트 - ${personality.name}`,
+        title: `바로코드 - ${label}`,
         text: shareText,
       });
       return { success: true, method: 'webshare' };
@@ -40,11 +37,11 @@ export async function shareResult(
   // 3순위: 클립보드 복사
   try {
     if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(shareText);
+      await navigator.clipboard.writeText(value);
       return { success: true, method: 'clipboard' };
     }
     const textarea = document.createElement('textarea');
-    textarea.value = shareText;
+    textarea.value = value;
     textarea.style.position = 'fixed';
     textarea.style.opacity = '0';
     document.body.appendChild(textarea);
