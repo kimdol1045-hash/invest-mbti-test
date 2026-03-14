@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지금약국 - NowPharm</title>
+  <meta name="description" content="지금 문 연 약국을 바로 찾아보세요. 심야·공휴일 운영 약국 검색 서비스.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
+      background: #fff;
+      color: #191F28;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+      background: linear-gradient(180deg, #F0F6FF 0%, #fff 60%);
+    }
+
+    .logo-wrap {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      overflow: hidden;
+      margin-bottom: 32px;
+      box-shadow: 0 8px 24px rgba(49, 130, 246, 0.15);
+    }
+
+    .logo-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #4E5968;
+      margin-bottom: 48px;
+      max-width: 400px;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 400px;
+      width: 100%;
+      margin-bottom: 48px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #F0F6FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .feature-text strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .feature-text span {
+      font-size: 14px;
+      color: #6B7684;
+    }
+
+    .toss-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #191F28;
+      color: #fff;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .toss-badge:hover {
+      background: #333D4B;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: #8B95A1;
+      border-top: 1px solid #F2F4F6;
+    }
+
+    footer a {
+      color: #6B7684;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="logo-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+        <rect width="600" height="600" fill="#3182F6"/>
+        <rect x="220" y="100" width="160" height="340" rx="28" fill="white"/>
+        <rect x="150" y="190" width="300" height="160" rx="28" fill="white"/>
+        <circle cx="430" cy="430" r="100" fill="white"/>
+        <circle cx="430" cy="430" r="84" fill="#3182F6"/>
+        <circle cx="430" cy="430" r="76" fill="white"/>
+        <line x1="430" y1="430" x2="430" y2="385" stroke="#191F28" stroke-width="8" stroke-linecap="round"/>
+        <line x1="430" y1="430" x2="462" y2="445" stroke="#3182F6" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="430" cy="430" r="6" fill="#191F28"/>
+      </svg>
+    </div>
+
+    <h1>지금약국</h1>
+    <p class="subtitle">지금 문 연 약국을 바로 찾아보세요.<br>심야·공휴일 운영 약국까지 한눈에.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3182F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <strong>내 주변 약국 찾기</strong>
+          <span>현재 위치 기반으로 가까운 약국을 찾아요</span>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3182F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <strong>실시간 영업 상태</strong>
+          <span>영업 중·곧 마감·영업 종료를 바로 확인해요</span>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3182F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <strong>약국 이름·주소 검색</strong>
+          <span>원하는 약국을 직접 검색할 수 있어요</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://toss.im" class="toss-badge">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M2 8.5C2 5.46 4.46 3 7.5 3h9C19.54 3 22 5.46 22 8.5v7c0 3.04-2.46 5.5-5.5 5.5h-9C4.46 21 2 18.54 2 15.5v-7zm5.5 1a1 1 0 1 0 0 2h9a1 1 0 1 0 0-2h-9zm0 4a1 1 0 1 0 0 2h5a1 1 0 1 0 0-2h-5z"/>
+      </svg>
+      토스에서 이용하기
+    </a>
+  </section>
+
+  <footer>
+    <p>지금약국 (NowPharm) · 앱인토스 서비스</p>
+    <p style="margin-top: 8px;">
+      약국 데이터 출처: <a href="https://www.data.go.kr" target="_blank">공공데이터포털</a> (건강보험심사평가원)
+    </p>
+    <p style="margin-top: 4px;">문의: kimdol1045@gmail.com</p>
+  </footer>
+</body>
+</html>

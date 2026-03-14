@@ -2,8 +2,6 @@ import type { KoreanAddress, EnglishAddress } from '../types/address';
 
 const JUSO_API_KEY = import.meta.env.VITE_JUSO_API_KEY ?? '';
 const JUSO_ENG_API_KEY = import.meta.env.VITE_JUSO_ENG_API_KEY ?? '';
-const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY ?? '';
-
 // --- 개발용 목 데이터 (API 키 만료 시 폴백) ---
 const MOCK_ADDRESSES: KoreanAddress[] = [
   {
@@ -248,33 +246,7 @@ export async function searchEnglishAddress(keyword: string, zipNo?: string): Pro
     // 폴백
   }
 
-  // 2순위: Google Geocoding (language=en) 폴백
-  try {
-    const gParams = new URLSearchParams({
-      address: keyword.trim(),
-      language: 'en',
-      key: GOOGLE_API_KEY,
-    });
-
-    const gRes = await fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?${gParams}`,
-    );
-    const gData = await gRes.json();
-
-    if (gData.status === 'OK' && gData.results?.length > 0) {
-      const formatted = gData.results[0].formatted_address;
-      return [{
-        roadAddr: formatted,
-        jibunAddr: '',
-        zipNo: zipNo ?? '',
-        korAddr: keyword.trim(),
-      }];
-    }
-  } catch {
-    // 폴백
-  }
-
-  // 3순위: 목 데이터
+  // 2순위: 목 데이터
   const eng = MOCK_ENG_MAP[keyword.trim()];
   if (eng) return [eng];
 

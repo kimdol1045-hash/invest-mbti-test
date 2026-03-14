@@ -1,0 +1,36 @@
+.filter-chips {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  height: 44px;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filter-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip {
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 16px;
+  border: 1px solid #E5E8EB;
+  background: #FFFFFF;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4E5968;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.filter-chip-active {
+  background: #3182F6;
+  border-color: #3182F6;
+  color: #FFFFFF;
+  font-weight: 600;
+}

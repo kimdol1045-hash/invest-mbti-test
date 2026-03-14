@@ -1,0 +1,31 @@
+.category-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 4px 20px 10px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.category-tab {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4E5968;
+  background: #F2F4F6;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.category-tab-active {
+  background: #3182F6;
+  color: #FFFFFF;
+  font-weight: 600;
+}

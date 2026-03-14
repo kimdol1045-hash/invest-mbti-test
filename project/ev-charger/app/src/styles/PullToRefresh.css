@@ -1,0 +1,28 @@
+.ptr-container {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  min-height: 100vh;
+}
+
+.ptr-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: height 0.2s ease, opacity 0.2s ease;
+}
+
+.ptr-spinner {
+  font-size: 24px;
+  color: #3182F6;
+  transition: transform 0.1s linear;
+}
+
+.ptr-spinner-active {
+  animation: ptr-rotate 0.8s linear infinite;
+}
+
+@keyframes ptr-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

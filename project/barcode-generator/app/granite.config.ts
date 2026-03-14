@@ -1,7 +1,7 @@
 import { defineConfig } from '@apps-in-toss/web-framework/config';
 
 export default defineConfig({
-  appName: 'barocode',
+  appName: 'baro-code',
   brand: {
     displayName: '바로코드',
     primaryColor: '#3182F6',

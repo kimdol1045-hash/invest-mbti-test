@@ -1,0 +1,47 @@
+:root {
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+    'Pretendard', 'Roboto', 'Noto Sans KR', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #191F28;
+  background-color: #FFFFFF;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --adaptiveBackground: #FFFFFF;
+  --adaptiveFloatBackground: #FFFFFF;
+  --adaptiveLayeredBackground: #F2F4F6;
+  --adaptiveGrey50: #F9FAFB;
+  --adaptiveGrey100: #F2F4F6;
+  --adaptiveGrey200: #E5E8EB;
+  --adaptiveGrey300: #D1D6DB;
+  --adaptiveGrey400: #B0B8C1;
+  --adaptiveGrey500: #8B95A1;
+  --adaptiveGrey600: #6B7684;
+  --adaptiveGrey700: #4E5968;
+  --adaptiveGrey800: #333D4B;
+  --adaptiveGrey900: #191F28;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#root {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+}

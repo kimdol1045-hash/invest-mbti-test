@@ -1,0 +1,133 @@
+.loc-search {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #FFFFFF;
+}
+
+.loc-search-bar-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 16px 12px;
+}
+
+.loc-search-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #F2F4F6;
+  border-radius: 10px;
+  padding: 0 12px;
+  gap: 8px;
+  height: 40px;
+}
+
+.loc-search-icon {
+  font-size: 14px;
+  color: #B0B8C1;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.loc-search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 14px;
+  color: #191F28;
+}
+
+.loc-search-input::placeholder {
+  color: #B0B8C1;
+}
+
+.loc-search-btn {
+  background: #3182F6;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 0 16px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.loc-search-divider {
+  height: 1px;
+  background: #F2F4F6;
+}
+
+.loc-search-loading {
+  text-align: center;
+  padding: 40px 16px;
+  color: #6B7684;
+  font-size: 14px;
+}
+
+.loc-search-empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.loc-search-empty-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.loc-search-empty-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: #191F28;
+  margin-bottom: 8px;
+}
+
+.loc-search-empty-desc {
+  font-size: 14px;
+  color: #6B7684;
+}
+
+.loc-search-results {
+  flex: 1;
+}
+
+.loc-search-result-header {
+  padding: 12px 20px 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #6B7684;
+}
+
+.loc-search-guide {
+  padding: 24px 20px;
+}
+
+.loc-search-guide-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #191F28;
+  margin-bottom: 12px;
+}
+
+.loc-search-guide-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.loc-search-guide-chip {
+  background: #F2F4F6;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #4E5968;
+  cursor: pointer;
+}
+
+.loc-search-guide-chip:active {
+  background: #E5E8EB;
+}

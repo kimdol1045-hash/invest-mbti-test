@@ -1,0 +1,35 @@
+.location-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 20px 10px;
+}
+
+.location-row-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.location-row-text {
+  font-size: 13px;
+  color: #4E5968;
+  font-weight: 500;
+}
+
+.location-row-refresh {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px;
+  line-height: 1;
+}
+
+.location-row-refresh-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,45 @@
+.charger-info-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #F2F4F6;
+}
+
+.charger-info-card:last-child {
+  border-bottom: none;
+}
+
+.charger-info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.charger-info-type {
+  font-size: 15px;
+  font-weight: 600;
+  color: #191F28;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.charger-info-output {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6B7684;
+}
+
+.charger-info-detail {
+  font-size: 13px;
+  color: #6B7684;
+}
+
+.charger-info-status {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}

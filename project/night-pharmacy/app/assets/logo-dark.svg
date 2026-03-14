@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#191F28"/>
+  <!-- Pharmacy cross -->
+  <rect x="220" y="100" width="160" height="340" rx="28" fill="#3182F6"/>
+  <rect x="150" y="190" width="300" height="160" rx="28" fill="#3182F6"/>
+  <!-- Clock circle -->
+  <circle cx="430" cy="430" r="100" fill="#3182F6"/>
+  <circle cx="430" cy="430" r="84" fill="#191F28"/>
+  <circle cx="430" cy="430" r="76" fill="#3182F6"/>
+  <!-- Clock hands -->
+  <line x1="430" y1="430" x2="430" y2="385" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <line x1="430" y1="430" x2="462" y2="445" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <!-- Clock center dot -->
+  <circle cx="430" cy="430" r="6" fill="white"/>
+</svg>

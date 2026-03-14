@@ -1,0 +1,90 @@
+.summary-card {
+  background: #FFFFFF;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-bottom: 8px solid #F2F4F6;
+}
+
+/* 요약 숫자 영역 */
+.summary-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 16px 0;
+  background: #F9FAFB;
+  border-radius: 14px;
+}
+
+.summary-status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.summary-status-num {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.summary-status-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6B7684;
+}
+
+.summary-status-available .summary-status-num {
+  color: #22C55E;
+}
+
+.summary-status-charging .summary-status-num {
+  color: #F59E0B;
+}
+
+.summary-status-unavailable .summary-status-num {
+  color: #F04452;
+}
+
+.summary-status-divider {
+  width: 1px;
+  height: 36px;
+  background: #E5E8EB;
+}
+
+/* 게이지 바 */
+.summary-gauge-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary-gauge-bar {
+  height: 8px;
+  background: #E5E8EB;
+  border-radius: 4px;
+  display: flex;
+  overflow: hidden;
+}
+
+.summary-gauge-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.summary-gauge-available {
+  background: #22C55E;
+}
+
+.summary-gauge-charging {
+  background: #F59E0B;
+}
+
+.summary-gauge-text {
+  font-size: 13px;
+  color: #6B7684;
+  text-align: center;
+}
