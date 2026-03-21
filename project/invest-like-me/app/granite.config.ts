@@ -5,7 +5,7 @@ export default defineConfig({
   brand: {
     displayName: '투자MBTI테스트',
     primaryColor: '#3182F6',
-    icon: 'https://raw.githubusercontent.com/kimdol1045-hash/invest-mbti-test/main/app/public/app-icon.svg',
+    icon: 'https://raw.githubusercontent.com/kimdol1045-hash/invest-mbti-test/main/project/invest-like-me/app/public/app-icon.png',
   },
   web: {
     host: '192.168.45.61',
