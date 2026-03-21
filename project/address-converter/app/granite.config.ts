@@ -5,7 +5,7 @@ export default defineConfig({
   brand: {
     displayName: '영문 주소 변환기',
     primaryColor: '#3182F6',
-    icon: '', // TODO: 콘솔에 로고 업로드 후 이미지 우클릭 → 링크 복사하여 교체
+    icon: 'https://raw.githubusercontent.com/kimdol1045-hash/invest-mbti-test/main/project/address-converter/app/public/app-icon.png',
   },
   web: {
     host: '192.168.45.61',
