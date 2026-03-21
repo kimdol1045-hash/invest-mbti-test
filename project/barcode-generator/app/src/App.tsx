@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useCallback } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingScreen from './components/LoadingScreen';
@@ -21,25 +21,46 @@ function BackEventHandler() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const handleBack = useCallback(() => {
-    navigate(-1);
-  }, [navigate]);
-
   useEffect(() => {
+    // 홈: 리스너 없이 프레임워크 기본 동작 (종료 팝업)
     if (pathname === '/') return;
 
     let unsubscribe: (() => void) | null = null;
     import('@apps-in-toss/web-framework')
       .then(({ graniteEvent }) => {
         unsubscribe = graniteEvent.addEventListener('backEvent', {
-          onEvent: handleBack,
+          onEvent: () => navigate('/', { replace: true }),
           onError: () => {},
         });
       })
       .catch(() => {});
 
     return () => { unsubscribe?.(); };
-  }, [pathname, handleBack]);
+  }, [pathname, navigate]);
+
+  return null;
+}
+
+function HomeEventHandler() {
+  useEffect(() => {
+    let unsubscribe: (() => void) | null = null;
+    import('@apps-in-toss/web-framework')
+      .then(({ graniteEvent }) => {
+        unsubscribe = graniteEvent.addEventListener('homeEvent', {
+          onEvent: () => {
+            // 히스토리 인덱스를 0으로 되돌려서 뒤로가기 시 종료 팝업이 뜨도록
+            const idx = window.history.state?.idx || 0;
+            if (idx > 0) {
+              window.history.go(-idx);
+            }
+          },
+          onError: () => {},
+        });
+      })
+      .catch(() => {});
+
+    return () => { unsubscribe?.(); };
+  }, []);
 
   return null;
 }
@@ -49,6 +70,7 @@ function App() {
     <ErrorBoundary>
       <ScrollToTop />
       <BackEventHandler />
+      <HomeEventHandler />
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route path="/" element={<Home />} />

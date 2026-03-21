@@ -1,30 +1,38 @@
+import { toPng } from 'html-to-image';
+
 /**
- * 코드 값 공유
- * 1순위: 앱인토스 네이티브 공유
- * 2순위: Web Share API
- * 3순위: 클립보드 복사
+ * 코드 이미지를 공유
+ * 1순위: Web Share API (이미지 파일)
+ * 2순위: 클립보드에 이미지 복사
+ * 3순위: 클립보드에 텍스트 복사
  */
 export async function shareCode(
   label: string,
   value: string,
+  codeElement?: HTMLElement | null,
 ): Promise<{ success: boolean; method: string }> {
-  const shareText = `[바로코드] ${label}\n${value}`;
-
-  // 1순위: 앱인토스 네이티브 공유
-  try {
-    const { share } = await import('@apps-in-toss/web-framework');
-    await share({ message: shareText });
-    return { success: true, method: 'toss' };
-  } catch {
-    // 폴백
+  // 이미지 생성 시도
+  let imageFile: File | null = null;
+  if (codeElement) {
+    try {
+      const dataUrl = await toPng(codeElement, {
+        backgroundColor: '#FFFFFF',
+        pixelRatio: 2,
+      });
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
+      imageFile = new File([blob], `barocode-${Date.now()}.png`, { type: 'image/png' });
+    } catch {
+      // 이미지 생성 실패 시 텍스트 폴백
+    }
   }
 
-  // 2순위: Web Share API
-  if (navigator.share) {
+  // 1순위: Web Share API (이미지 포함)
+  if (navigator.share && imageFile && navigator.canShare?.({ files: [imageFile] })) {
     try {
       await navigator.share({
         title: `바로코드 - ${label}`,
-        text: shareText,
+        files: [imageFile],
       });
       return { success: true, method: 'webshare' };
     } catch (error) {
@@ -34,22 +42,29 @@ export async function shareCode(
     }
   }
 
-  // 3순위: 클립보드 복사
+  // 2순위: 클립보드에 이미지 복사
+  if (imageFile && navigator.clipboard?.write) {
+    try {
+      const blob = imageFile.slice(0, imageFile.size, 'image/png');
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': blob }),
+      ]);
+      return { success: true, method: 'clipboard-image' };
+    } catch {
+      // 폴백
+    }
+  }
+
+  // 3순위: 클립보드에 텍스트 복사
   try {
+    const text = `[바로코드] ${label}\n${value}`;
     if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(value);
+      await navigator.clipboard.writeText(text);
       return { success: true, method: 'clipboard' };
     }
-    const textarea = document.createElement('textarea');
-    textarea.value = value;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-    return { success: true, method: 'clipboard' };
   } catch {
-    return { success: false, method: 'none' };
+    // 무시
   }
+
+  return { success: false, method: 'none' };
 }

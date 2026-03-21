@@ -35,8 +35,10 @@ export default function Result() {
   };
 
   const handleShare = async () => {
-    const result = await shareCode(label, value);
-    if (result.method === 'clipboard') {
+    const result = await shareCode(label, value, codeRef.current);
+    if (result.method === 'clipboard-image') {
+      showToast('이미지를 클립보드에 복사했어요');
+    } else if (result.method === 'clipboard') {
       showToast('클립보드에 복사했어요');
     } else if (result.method === 'cancelled') {
       // 취소
@@ -104,7 +106,7 @@ export default function Result() {
             variant="fill"
             size="large"
             style={{ width: '100%' }}
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/', { replace: true })}
           >
             홈으로 돌아가기
           </Button>

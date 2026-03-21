@@ -69,7 +69,7 @@ export default function Create() {
         label,
         typeOrFormat: qrType,
       });
-      navigate(`/result?${params.toString()}`);
+      navigate(`/result?${params.toString()}`, { replace: true });
     } else if (mode === 'barcode' && barcodeFormat) {
       const value = formData.value || '';
       const err = validateBarcodeInput(barcodeFormat, value);
@@ -93,7 +93,7 @@ export default function Create() {
         label,
         typeOrFormat: barcodeFormat,
       });
-      navigate(`/result?${params.toString()}`);
+      navigate(`/result?${params.toString()}`, { replace: true });
     }
   };
 

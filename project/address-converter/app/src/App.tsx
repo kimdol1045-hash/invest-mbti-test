@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useCallback } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingScreen from './components/LoadingScreen';
@@ -21,10 +21,6 @@ function BackEventHandler() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const handleBack = useCallback(() => {
-    navigate(-1);
-  }, [navigate]);
-
   useEffect(() => {
     if (pathname === '/') return;
 
@@ -32,16 +28,37 @@ function BackEventHandler() {
     import('@apps-in-toss/web-framework')
       .then(({ graniteEvent }) => {
         unsubscribe = graniteEvent.addEventListener('backEvent', {
-          onEvent: handleBack,
-          onError: (error) => {
-            console.error(`뒤로가기 이벤트 처리 중 오류: ${error}`);
-          },
+          onEvent: () => navigate('/', { replace: true }),
+          onError: () => {},
         });
       })
       .catch(() => {});
 
     return () => { unsubscribe?.(); };
-  }, [pathname, handleBack]);
+  }, [pathname, navigate]);
+
+  return null;
+}
+
+function HomeEventHandler() {
+  useEffect(() => {
+    let unsubscribe: (() => void) | null = null;
+    import('@apps-in-toss/web-framework')
+      .then(({ graniteEvent }) => {
+        unsubscribe = graniteEvent.addEventListener('homeEvent', {
+          onEvent: () => {
+            const idx = window.history.state?.idx || 0;
+            if (idx > 0) {
+              window.history.go(-idx);
+            }
+          },
+          onError: () => {},
+        });
+      })
+      .catch(() => {});
+
+    return () => { unsubscribe?.(); };
+  }, []);
 
   return null;
 }
@@ -51,6 +68,7 @@ function App() {
     <ErrorBoundary>
       <ScrollToTop />
       <BackEventHandler />
+      <HomeEventHandler />
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route path="/" element={<Home />} />
