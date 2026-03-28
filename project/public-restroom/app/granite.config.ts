@@ -1,11 +1,11 @@
 import { defineConfig } from '@apps-in-toss/web-framework/config';
 
 export default defineConfig({
-  appName: 'nearloo',
+  appName: 'near-toilet',
   brand: {
     displayName: '급할 땐 여기',
     primaryColor: '#3182F6',
-    icon: '',
+    icon: 'https://raw.githubusercontent.com/kimdol1045-hash/invest-mbti-test/main/project/public-restroom/app/public/app-icon.png',
   },
   web: {
     host: 'localhost',

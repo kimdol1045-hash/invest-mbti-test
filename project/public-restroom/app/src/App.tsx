@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useCallback, useRef } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary.tsx';
 import LoadingScreen from './components/LoadingScreen.tsx';
@@ -20,68 +20,53 @@ function ScrollToTop() {
 function BackEventHandler() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const cancelledRef = useRef(false);
-
-  const handleBack = useCallback(() => {
-    navigate(-1);
-  }, [navigate]);
 
   useEffect(() => {
+    // 홈: 리스너 없이 프레임워크 기본 동작 (종료 팝업)
     if (pathname === '/') return;
 
-    cancelledRef.current = false;
     let unsubscribe: (() => void) | null = null;
-
     import('@apps-in-toss/web-framework')
       .then(({ graniteEvent }) => {
-        if (cancelledRef.current) return;
         unsubscribe = graniteEvent.addEventListener('backEvent', {
-          onEvent: handleBack,
-          onError: (error) => {
-            console.error(`뒤로가기 이벤트 처리 중 오류: ${error}`);
+          onEvent: () => {
+            // 딥링크 직접 진입 시 히스토리 없으면 홈으로
+            if (window.history.state?.idx === 0) {
+              navigate('/', { replace: true });
+            } else {
+              navigate(-1);
+            }
           },
+          onError: () => {},
         });
       })
       .catch(() => {});
 
-    return () => {
-      cancelledRef.current = true;
-      unsubscribe?.();
-    };
-  }, [pathname, handleBack]);
+    return () => { unsubscribe?.(); };
+  }, [pathname, navigate]);
 
   return null;
 }
 
 function HomeEventHandler() {
-  const navigate = useNavigate();
-  const cancelledRef = useRef(false);
-
-  const handleHome = useCallback(() => {
-    navigate('/', { replace: true });
-  }, [navigate]);
-
   useEffect(() => {
-    cancelledRef.current = false;
     let unsubscribe: (() => void) | null = null;
-
     import('@apps-in-toss/web-framework')
       .then(({ graniteEvent }) => {
-        if (cancelledRef.current) return;
         unsubscribe = graniteEvent.addEventListener('homeEvent', {
-          onEvent: handleHome,
-          onError: (error) => {
-            console.error(`홈 이벤트 처리 중 오류: ${error}`);
+          onEvent: () => {
+            const idx = window.history.state?.idx || 0;
+            if (idx > 0) {
+              window.history.go(-idx);
+            }
           },
+          onError: () => {},
         });
       })
       .catch(() => {});
 
-    return () => {
-      cancelledRef.current = true;
-      unsubscribe?.();
-    };
-  }, [handleHome]);
+    return () => { unsubscribe?.(); };
+  }, []);
 
   return null;
 }
