@@ -7,6 +7,6 @@ export function useStationById(statId: string | null) {
     queryKey: ['station-detail', statId],
     queryFn: () => fetchStationById(statId!),
     enabled: !!statId,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 60 * 1000,
   });
 }

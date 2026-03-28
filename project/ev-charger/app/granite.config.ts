@@ -5,7 +5,7 @@ export default defineConfig({
   brand: {
     displayName: '충전어디',
     primaryColor: '#3182F6',
-    icon: '', // TODO: 콘솔에 로고 업로드 후 이미지 우클릭 → 링크 복사하여 교체
+    icon: 'https://raw.githubusercontent.com/kimdol1045-hash/invest-mbti-test/main/project/ev-charger/app/public/app-icon.png',
   },
   web: {
     host: 'localhost',
@@ -32,12 +32,5 @@ export default defineConfig({
   navigationBar: {
     withBackButton: true,
     withHomeButton: true,
-    initialAccessoryButton: {
-      id: 'favorites',
-      title: '즐겨찾기',
-      icon: {
-        name: 'icon-heart-mono',
-      },
-    },
   },
 });

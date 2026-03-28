@@ -1,0 +1,3 @@
+name = "ev-charger-api"
+main = "src/index.ts"
+compatibility_date = "2025-03-17"

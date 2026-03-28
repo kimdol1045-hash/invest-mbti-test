@@ -1,12 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useGeolocation } from '../hooks/useGeolocation';
 import { useChargerStations } from '../hooks/useChargerStations';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
-import { extractAreaFromKeyword } from '../utils/area-codes';
 import { matchSearchArea } from '../utils/search-areas';
-import { calculateDistance } from '../utils/geolocation';
-import { storage } from '../utils/storage';
 import StationCard from '../components/StationCard';
 import LoadingScreen from '../components/LoadingScreen';
 import '../styles/SearchResult.css';
@@ -15,33 +12,26 @@ export default function SearchResult() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const keyword = searchParams.get('q') ?? '';
-  const areaParam = searchParams.get('area');
-  const { areaCode: geoAreaCode } = useGeolocation();
+  const { position } = useGeolocation();
 
   // 로컬 지역 매칭 (API 호출 없음)
   const areaMatch = useMemo(() => matchSearchArea(keyword), [keyword]);
 
-  const areaCode = useMemo(() => {
-    return areaParam ?? areaMatch?.areaCode ?? extractAreaFromKeyword(keyword) ?? geoAreaCode ?? '11';
-  }, [areaParam, keyword, geoAreaCode, areaMatch]);
+  // 검색 지역 좌표 또는 현재 위치 사용
+  const searchPosition = useMemo(() => {
+    if (areaMatch) return { lat: areaMatch.lat, lng: areaMatch.lng };
+    return position;
+  }, [areaMatch, position]);
 
   const { data: stations = [], isLoading } = useChargerStations({
-    areaCode,
+    position: searchPosition,
+    radius: 2,
     enabled: true,
   });
 
-  const [favorites, setFavorites] = useState(() => new Set(storage.getFavorites().map(f => f.statId)));
-
-  // 지역 매칭 시 좌표 기준 거리순 정렬, 아니면 텍스트 검색
+  // 서버에서 이미 거리순 정렬 + 2km 필터링됨, 텍스트 검색만 추가 필터
   const filtered = useMemo(() => {
-    if (areaMatch) {
-      const recalculated = stations.map(s => ({
-        ...s,
-        distance: calculateDistance(areaMatch.lat, areaMatch.lng, s.lat, s.lng),
-      }));
-      recalculated.sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity));
-      return recalculated;
-    }
+    if (areaMatch) return stations;
     if (!keyword) return stations;
     const lowerKeyword = keyword.toLowerCase();
     return stations.filter(s =>
@@ -55,24 +45,6 @@ export default function SearchResult() {
     items: filtered,
     pageSize: 20,
   });
-
-  const handleToggleFavorite = (statId: string) => {
-    const station = stations.find(s => s.statId === statId);
-    if (!station) return;
-    const added = storage.toggleFavorite({
-      statId: station.statId,
-      statNm: station.statNm,
-      addr: station.addr,
-      lat: station.lat,
-      lng: station.lng,
-    });
-    setFavorites(prev => {
-      const next = new Set(prev);
-      if (added) next.add(statId);
-      else next.delete(statId);
-      return next;
-    });
-  };
 
   return (
     <div className="search-result">
@@ -110,9 +82,6 @@ export default function SearchResult() {
             <StationCard
               key={station.statId}
               station={station}
-              showFavorite
-              isFavorited={favorites.has(station.statId)}
-              onToggleFavorite={handleToggleFavorite}
             />
           ))}
           {hasMore && <div ref={sentinelRef} className="search-result-sentinel" />}

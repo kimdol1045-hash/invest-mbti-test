@@ -5,16 +5,14 @@ import '../styles/StationCard.css';
 
 interface StationCardProps {
   station: ChargingStation;
-  showFavorite?: boolean;
-  isFavorited?: boolean;
-  onToggleFavorite?: (statId: string) => void;
 }
 
-export default function StationCard({ station, showFavorite, isFavorited, onToggleFavorite }: StationCardProps) {
+export default function StationCard({ station }: StationCardProps) {
   const navigate = useNavigate();
 
-  const availableColor = station.availableCount > 0 ? '#3182F6' : station.chargers.some(c => c.stat === '3') ? '#F59E0B' : '#F04452';
-  const availableLabel = station.availableCount > 0 ? '사용가능' : station.chargers.some(c => c.stat === '3') ? '충전중' : '운휴';
+  const chargers = station.chargers ?? [];
+  const availableColor = station.availableCount > 0 ? '#3182F6' : chargers.some(c => c.stat === '3') ? '#F59E0B' : '#F04452';
+  const availableLabel = station.availableCount > 0 ? '사용가능' : chargers.some(c => c.stat === '3') ? '충전중' : '운휴';
 
   return (
     <div
@@ -45,17 +43,6 @@ export default function StationCard({ station, showFavorite, isFavorited, onTogg
                 ? `${Math.round(station.distance * 1000)}m`
                 : `${station.distance.toFixed(1)}km`}
             </span>
-          )}
-          {showFavorite && (
-            <button
-              className="station-card-fav"
-              onClick={(e) => {
-                e.stopPropagation();
-                onToggleFavorite?.(station.statId);
-              }}
-            >
-              {isFavorited ? '❤️' : '🤍'}
-            </button>
           )}
         </div>
       </div>

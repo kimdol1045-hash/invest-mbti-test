@@ -5,25 +5,22 @@ import { useGeolocation } from '../hooks/useGeolocation';
 import { useChargerStations } from '../hooks/useChargerStations';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 import { filterStations } from '../utils/api';
-import { calculateDistance } from '../utils/geolocation';
 import { storage } from '../utils/storage';
 import PullToRefresh from '../components/PullToRefresh';
 import StationCard from '../components/StationCard';
 import FilterChips from '../components/FilterChips';
 import LocationRow from '../components/LocationRow';
 import LoadingScreen from '../components/LoadingScreen';
-import { getAreaName } from '../utils/area-codes';
 import '../styles/Home.css';
 
 export default function Home() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const { position, displayLocation, areaCode, loading: geoLoading, permissionDenied, refresh: refreshGeo } = useGeolocation();
+  const { position, displayLocation, loading: geoLoading, permissionDenied, refresh: refreshGeo } = useGeolocation();
   const [filter, setFilter] = useState(() => storage.getFilter());
   const [sort, setSort] = useState<'거리순' | '사용가능순'>('거리순');
   const [sortOpen, setSortOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
-  const [favorites, setFavorites] = useState(() => new Set(storage.getFavorites().map(f => f.statId)));
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -35,18 +32,9 @@ export default function Home() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [sortOpen]);
 
-  const { data: rawStations = [], isLoading: stationsLoading } = useChargerStations({
-    areaCode,
+  const { data: stations = [], isLoading: stationsLoading } = useChargerStations({
+    position,
   });
-
-  // 거리 계산을 별도로 수행 (API 재호출 없이 위치 변경 시 즉시 반영)
-  const stations = useMemo(() => {
-    if (!position || rawStations.length === 0) return rawStations;
-    return rawStations.map(s => ({
-      ...s,
-      distance: calculateDistance(position.lat, position.lng, s.lat, s.lng),
-    })).sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity));
-  }, [rawStations, position]);
 
   const filteredStations = useMemo(() => {
     let result = filterStations(stations, filter);
@@ -62,44 +50,22 @@ export default function Home() {
   });
 
   const handleRefresh = useCallback(async () => {
-    await queryClient.invalidateQueries({ queryKey: ['charger-stations', areaCode] });
+    await queryClient.invalidateQueries({ queryKey: ['charger-stations'] });
     await refreshGeo();
-  }, [queryClient, areaCode, refreshGeo]);
+  }, [queryClient, refreshGeo]);
 
   const handleFilterChange = (f: string) => {
     setFilter(f);
     storage.setFilter(f);
   };
 
-  const handleToggleFavorite = (statId: string) => {
-    const station = stations.find(s => s.statId === statId);
-    if (!station) return;
-    const added = storage.toggleFavorite({
-      statId: station.statId,
-      statNm: station.statNm,
-      addr: station.addr,
-      lat: station.lat,
-      lng: station.lng,
-    });
-    setFavorites(prev => {
-      const next = new Set(prev);
-      if (added) next.add(statId);
-      else next.delete(statId);
-      return next;
-    });
-  };
-
-  const locationText = displayLocation
-    ?? (areaCode ? getAreaName(areaCode) : '위치 확인 중...');
+  const locationText = displayLocation ?? '위치 확인 중...';
 
   return (
     <PullToRefresh onRefresh={handleRefresh}>
       <div className="home">
         <div className="home-nav">
           <h1 className="home-title">충전어디</h1>
-          <button className="home-fav-btn" onClick={() => navigate('/favorites')}>
-            🤍
-          </button>
         </div>
 
         <div className="home-search-wrap" onClick={() => navigate('/search')}>
@@ -150,7 +116,7 @@ export default function Home() {
 
         <div className="home-divider" />
 
-        {stationsLoading ? (
+        {(geoLoading || stationsLoading) ? (
           <LoadingScreen />
         ) : permissionDenied && stations.length === 0 ? (
           <div className="home-empty">
@@ -170,9 +136,6 @@ export default function Home() {
               <StationCard
                 key={station.statId}
                 station={station}
-                showFavorite
-                isFavorited={favorites.has(station.statId)}
-                onToggleFavorite={handleToggleFavorite}
               />
             ))}
             {hasMore && <div ref={sentinelRef} className="home-sentinel" />}

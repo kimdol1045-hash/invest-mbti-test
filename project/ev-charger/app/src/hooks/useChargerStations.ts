@@ -1,31 +1,24 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchStationInfo, fetchStationStatus, mergeStationData, getMockStations } from '../utils/api';
+import { fetchStations } from '../utils/api';
 import type { ChargingStation } from '../types/charger';
+import type { Position } from '../utils/geolocation';
 
 interface UseChargerStationsOptions {
-  areaCode: string | null;
+  position?: Position | null;
+  radius?: number;
   enabled?: boolean;
 }
 
-export function useChargerStations({ areaCode, enabled = true }: UseChargerStationsOptions) {
+export function useChargerStations({ position, radius = 2, enabled = true }: UseChargerStationsOptions) {
   return useQuery<ChargingStation[]>({
-    queryKey: ['charger-stations', areaCode],
+    queryKey: ['charger-stations', position?.lat, position?.lng, radius],
     queryFn: async () => {
-      if (!areaCode) return [];
-
-      const apiKey = import.meta.env.VITE_DATA_GO_KR_API_KEY;
-      if (!apiKey) {
-        return getMockStations();
+      if (position) {
+        return fetchStations({ lat: position.lat, lng: position.lng, radius });
       }
-
-      const [infoItems, statusItems] = await Promise.all([
-        fetchStationInfo(areaCode),
-        fetchStationStatus(areaCode),
-      ]);
-
-      return mergeStationData(infoItems, statusItems);
+      return [];
     },
-    staleTime: 5 * 60 * 1000,
-    enabled: enabled && !!areaCode,
+    staleTime: 3 * 60 * 1000,
+    enabled: enabled && !!position,
   });
 }

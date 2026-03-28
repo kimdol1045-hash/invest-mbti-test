@@ -1,16 +1,43 @@
-import type { ChargerInfoItem, ChargerStatusItem, ChargingStation, Charger, ChargerStatCode } from '../types/charger';
+import type { ChargingStation, Charger } from '../types/charger';
+import { calculateDistance } from './geolocation';
 
+const API_KEY = 'a2daf88e0413315788b8fa3618ee66bb144b2e711a10d0625d9daf0b5005fc5c';
+const JUSO_API_KEY = 'U01TX0FVVEgyMDI2MDMwNjIyMjQ0NDExNzY5NTc=';
 const API_BASE = 'https://apis.data.go.kr/B552584/EvCharger';
 
+// 서울 구별 zscode + 좌표
+const SEOUL_ZSCODES: { zscode: string; lat: number; lng: number }[] = [
+  { zscode: '11110', lat: 37.5735, lng: 126.9790 }, // 종로구
+  { zscode: '11140', lat: 37.5641, lng: 126.9979 }, // 중구
+  { zscode: '11170', lat: 37.5324, lng: 126.9906 }, // 용산구
+  { zscode: '11200', lat: 37.5633, lng: 127.0371 }, // 성동구
+  { zscode: '11215', lat: 37.5385, lng: 127.0823 }, // 광진구
+  { zscode: '11230', lat: 37.5744, lng: 127.0396 }, // 동대문구
+  { zscode: '11260', lat: 37.6063, lng: 127.0928 }, // 중랑구
+  { zscode: '11290', lat: 37.5894, lng: 127.0167 }, // 성북구
+  { zscode: '11305', lat: 37.6396, lng: 127.0255 }, // 강북구
+  { zscode: '11320', lat: 37.6688, lng: 127.0472 }, // 도봉구
+  { zscode: '11350', lat: 37.6543, lng: 127.0568 }, // 노원구
+  { zscode: '11380', lat: 37.6027, lng: 126.9291 }, // 은평구
+  { zscode: '11410', lat: 37.5791, lng: 126.9368 }, // 서대문구
+  { zscode: '11440', lat: 37.5663, lng: 126.9017 }, // 마포구
+  { zscode: '11470', lat: 37.5170, lng: 126.8666 }, // 양천구
+  { zscode: '11500', lat: 37.5510, lng: 126.8495 }, // 강서구
+  { zscode: '11530', lat: 37.4955, lng: 126.8879 }, // 구로구
+  { zscode: '11545', lat: 37.4569, lng: 126.8955 }, // 금천구
+  { zscode: '11560', lat: 37.5264, lng: 126.8963 }, // 영등포구
+  { zscode: '11590', lat: 37.5124, lng: 126.9394 }, // 동작구
+  { zscode: '11620', lat: 37.4784, lng: 126.9516 }, // 관악구
+  { zscode: '11650', lat: 37.4837, lng: 127.0324 }, // 서초구
+  { zscode: '11680', lat: 37.5172, lng: 127.0473 }, // 강남구
+  { zscode: '11710', lat: 37.5146, lng: 127.1055 }, // 송파구
+  { zscode: '11740', lat: 37.5301, lng: 127.1238 }, // 강동구
+];
+
 const CHARGER_TYPE_MAP: Record<string, string> = {
-  '01': 'DC차데모',
-  '02': 'AC완속',
-  '03': 'DC차데모+AC3상',
-  '04': 'DC콤보',
-  '05': 'DC차데모+DC콤보',
-  '06': 'DC차데모+AC3상+DC콤보',
-  '07': 'AC3상',
-  '08': 'DC콤보(완속겸용)',
+  '01': 'DC차데모', '02': 'AC완속', '03': 'DC차데모+AC3상',
+  '04': 'DC콤보', '05': 'DC차데모+DC콤보', '06': 'DC차데모+AC3상+DC콤보',
+  '07': 'AC3상', '08': 'DC콤보(완속겸용)',
 };
 
 const STAT_MAP: Record<string, { label: string; color: string }> = {
@@ -30,99 +57,94 @@ export function getStatInfo(stat: string): { label: string; color: string } {
   return STAT_MAP[stat] ?? { label: '상태미확인', color: '#8B95A1' };
 }
 
-function parseChargerType(typeCode: string): string[] {
-  const types: string[] = [];
+function parseChargerTypes(typeCode: string): string[] {
   switch (typeCode) {
-    case '01': types.push('DC차데모'); break;
-    case '02': types.push('AC완속'); break;
-    case '03': types.push('DC차데모', 'AC3상'); break;
-    case '04': types.push('DC콤보'); break;
-    case '05': types.push('DC차데모', 'DC콤보'); break;
-    case '06': types.push('DC차데모', 'AC3상', 'DC콤보'); break;
-    case '07': types.push('AC3상'); break;
-    case '08': types.push('DC콤보'); break;
-    default: types.push('기타');
+    case '01': return ['DC차데모'];
+    case '02': return ['AC완속'];
+    case '03': return ['DC차데모', 'AC3상'];
+    case '04': return ['DC콤보'];
+    case '05': return ['DC차데모', 'DC콤보'];
+    case '06': return ['DC차데모', 'AC3상', 'DC콤보'];
+    case '07': return ['AC3상'];
+    case '08': return ['DC콤보'];
+    default: return ['기타'];
   }
-  return types;
 }
 
-async function fetchFromApi<T>(endpoint: string, params: Record<string, string>): Promise<T[]> {
-  const apiKey = import.meta.env.VITE_DATA_GO_KR_API_KEY;
-  if (!apiKey) return [];
-
-  const searchParams = new URLSearchParams({
-    serviceKey: apiKey,
-    dataType: 'JSON',
-    numOfRows: '100',
-    pageNo: '1',
-    ...params,
-  });
-
-  const res = await fetch(`${API_BASE}/${endpoint}?${searchParams.toString()}`);
-  if (!res.ok) throw new Error(`API 요청 실패: ${res.status}`);
-
-  const data = await res.json();
-  const items = data?.items?.item;
-  if (!items) return [];
-  return Array.isArray(items) ? items : [items];
+function getNearestZscodes(lat: number, lng: number, count = 1): string[] {
+  return SEOUL_ZSCODES
+    .map(d => ({ zscode: d.zscode, dist: (d.lat - lat) ** 2 + (d.lng - lng) ** 2 }))
+    .sort((a, b) => a.dist - b.dist)
+    .slice(0, count)
+    .map(d => d.zscode);
 }
 
-export async function fetchStationInfo(zcode: string): Promise<ChargerInfoItem[]> {
-  return fetchFromApi<ChargerInfoItem>('getChargerInfo', { zcode });
-}
+// 구별 인메모리 캐시
+const districtCache = new Map<string, { stations: ChargingStation[]; rawItems: any[]; time: number }>();
+const CACHE_TTL = 3 * 60 * 1000;
 
-export async function fetchStationStatus(zcode: string): Promise<ChargerStatusItem[]> {
-  return fetchFromApi<ChargerStatusItem>('getChargerStatus', { zcode, period: '5' });
-}
+async function fetchFromAPI(params: Record<string, string>): Promise<any[]> {
+  const allItems: any[] = [];
+  let pageNo = 1;
 
-export function mergeStationData(
-  infoItems: ChargerInfoItem[],
-  statusItems: ChargerStatusItem[]
-): ChargingStation[] {
-  const statusMap = new Map<string, ChargerStatusItem>();
-  for (const s of statusItems) {
-    statusMap.set(`${s.statId}_${s.chgerId}`, s);
+  while (true) {
+    const searchParams = new URLSearchParams({
+      serviceKey: API_KEY,
+      dataType: 'JSON',
+      numOfRows: '9999',
+      pageNo: String(pageNo),
+      ...params,
+    });
+
+    const res = await fetch(`${API_BASE}/getChargerInfo?${searchParams.toString()}`);
+    const data = await res.json();
+    const items = data?.items?.item;
+    if (!items) break;
+
+    const arr = Array.isArray(items) ? items : [items];
+    allItems.push(...arr);
+    if (arr.length < 9999) break;
+    pageNo++;
   }
 
-  const stationMap = new Map<string, {
-    info: ChargerInfoItem;
-    chargers: Charger[];
-  }>();
+  return allItems;
+}
 
-  for (const item of infoItems) {
+function buildCharger(item: any): Charger {
+  const stat = item.stat ?? '9';
+  const statInfo = STAT_MAP[stat] ?? { label: '상태미확인', color: '#6B7684' };
+  return {
+    chgerId: item.chgerId,
+    type: CHARGER_TYPE_MAP[item.chgerType] ?? '기타',
+    typeCode: item.chgerType,
+    output: item.output ? `${item.output}kW` : '',
+    stat: stat as any,
+    statLabel: statInfo.label,
+    statColor: statInfo.color,
+    lastUpdated: item.statUpdDt ?? '',
+  };
+}
+
+function mergeToStations(items: any[], includeChargers = false): ChargingStation[] {
+  const stationMap = new Map<string, { info: any; chargerItems: any[] }>();
+
+  for (const item of items) {
     if (item.delYn === 'Y') continue;
-
-    const key = `${item.statId}_${item.chgerId}`;
-    const status = statusMap.get(key);
-    const stat = (status?.stat ?? '9') as ChargerStatCode;
-    const statInfo = getStatInfo(stat);
-
-    const charger: Charger = {
-      chgerId: item.chgerId,
-      type: getChargerTypeLabel(item.chgerType),
-      typeCode: item.chgerType,
-      output: item.output ? `${item.output}kW` : '',
-      stat,
-      statLabel: statInfo.label,
-      statColor: statInfo.color,
-      lastUpdated: status?.statUpdDt ?? '',
-    };
-
     if (!stationMap.has(item.statId)) {
-      stationMap.set(item.statId, { info: item, chargers: [] });
+      stationMap.set(item.statId, { info: item, chargerItems: [] });
     }
-    stationMap.get(item.statId)!.chargers.push(charger);
+    stationMap.get(item.statId)!.chargerItems.push(item);
   }
 
   const stations: ChargingStation[] = [];
-
-  for (const [statId, { info, chargers }] of stationMap) {
-    const availableCount = chargers.filter(c => c.stat === '2').length;
+  for (const [statId, { info, chargerItems }] of stationMap) {
+    let availableCount = 0;
     const typesSet = new Set<string>();
     let maxKw = 0;
 
-    for (const c of chargers) {
-      parseChargerType(c.typeCode).forEach(t => typesSet.add(t));
+    for (const c of chargerItems) {
+      if (c.stat === '2') availableCount++;
+      parseChargerTypes(c.chgerType).forEach(t => typesSet.add(t));
       const kw = parseInt(c.output) || 0;
       if (kw > maxKw) maxKw = kw;
     }
@@ -139,9 +161,9 @@ export function mergeStationData(
       busiCall: info.busiCall || '',
       parkingFree: info.parkingFree === 'Y',
       note: info.note || '',
-      chargers,
+      chargers: includeChargers ? chargerItems.map(buildCharger) : [],
       availableCount,
-      totalCount: chargers.length,
+      totalCount: chargerItems.length,
       chargerTypes: Array.from(typesSet),
       maxOutput: maxKw > 0 ? `${maxKw}kW` : '',
     });
@@ -150,23 +172,57 @@ export function mergeStationData(
   return stations;
 }
 
-export async function fetchStationById(statId: string): Promise<ChargingStation | null> {
-  const apiKey = import.meta.env.VITE_DATA_GO_KR_API_KEY;
-  if (!apiKey || !statId) return null;
-
-  try {
-    const [infoItems, statusItems] = await Promise.all([
-      fetchFromApi<ChargerInfoItem>('getChargerInfo', { statId }),
-      fetchFromApi<ChargerStatusItem>('getChargerStatus', { statId }),
-    ]);
-
-    if (infoItems.length === 0) return null;
-
-    const stations = mergeStationData(infoItems, statusItems);
-    return stations.find(s => s.statId === statId) ?? stations[0] ?? null;
-  } catch {
-    return null;
+async function loadDistrict(zscode: string): Promise<{ stations: ChargingStation[]; rawItems: any[] }> {
+  const cached = districtCache.get(zscode);
+  if (cached && Date.now() - cached.time < CACHE_TTL) {
+    return cached;
   }
+
+  const items = await fetchFromAPI({ zscode });
+  const stations = mergeToStations(items);
+  const result = { stations, rawItems: items, time: Date.now() };
+  districtCache.set(zscode, result);
+  return result;
+}
+
+export async function fetchStations(opts: { lat?: number; lng?: number; radius?: number }): Promise<ChargingStation[]> {
+  const { lat, lng, radius = 2 } = opts;
+  if (lat == null || lng == null) return [];
+
+  const zscodes = getNearestZscodes(lat, lng, radius <= 2 ? 1 : 2);
+  const results = await Promise.all(zscodes.map(z => loadDistrict(z)));
+
+  const stationMap = new Map<string, ChargingStation>();
+  for (const { stations } of results) {
+    for (const s of stations) {
+      if (!stationMap.has(s.statId)) stationMap.set(s.statId, s);
+    }
+  }
+
+  return Array.from(stationMap.values())
+    .map(s => ({ ...s, distance: Math.round(calculateDistance(lat, lng, s.lat, s.lng) * 100) / 100 }))
+    .filter(s => (s.distance ?? Infinity) <= radius)
+    .sort((a, b) => (a.distance ?? 0) - (b.distance ?? 0));
+}
+
+export async function fetchStationById(statId: string): Promise<ChargingStation | null> {
+  if (!statId) return null;
+
+  // 캐시에서 먼저 찾기 (rawItems에서 charger 정보 빌드)
+  for (const cached of districtCache.values()) {
+    if (Date.now() - cached.time < CACHE_TTL) {
+      const stationItems = cached.rawItems.filter((i: any) => i.statId === statId);
+      if (stationItems.length > 0) {
+        const stations = mergeToStations(stationItems, true);
+        if (stations.length > 0) return stations[0];
+      }
+    }
+  }
+
+  // 캐시 없으면 직접 조회
+  const items = await fetchFromAPI({ statId });
+  const stations = mergeToStations(items, true);
+  return stations.length > 0 ? stations[0] : null;
 }
 
 export function filterStations(
@@ -177,193 +233,33 @@ export function filterStations(
   return stations.filter(s => s.chargerTypes.some(t => t === filterType));
 }
 
-// Juso API (행정안전부 주소 검색)
+// Juso API (CORS 미지원으로 JSONP 대신 직접 호출 시도)
 export interface JusoResult {
-  roadAddr: string;      // 도로명주소
-  jibunAddr: string;     // 지번주소
-  zipNo: string;         // 우편번호
-  siNm: string;          // 시도명
-  sggNm: string;         // 시군구명
-  emdNm: string;         // 읍면동명
+  roadAddr: string;
+  jibunAddr: string;
+  zipNo: string;
+  siNm: string;
+  sggNm: string;
+  emdNm: string;
 }
 
 export async function searchJuso(keyword: string): Promise<JusoResult[]> {
-  const apiKey = import.meta.env.VITE_JUSO_API_KEY;
-  if (!apiKey || !keyword.trim()) return [];
-
-  const params = new URLSearchParams({
-    confmKey: apiKey,
-    keyword: keyword.trim(),
-    currentPage: '1',
-    countPerPage: '10',
-    resultType: 'json',
-  });
-
+  if (!keyword.trim()) return [];
   try {
+    const params = new URLSearchParams({
+      confmKey: JUSO_API_KEY,
+      keyword: keyword.trim(),
+      currentPage: '1',
+      countPerPage: '10',
+      resultType: 'json',
+    });
     const res = await fetch(`https://business.juso.go.kr/addrlink/addrLinkApi.do?${params.toString()}`);
     if (!res.ok) return [];
-
     const data = await res.json();
-    const common = data?.results?.common;
-    if (common?.errorCode !== '0') return [];
-
+    if (data?.results?.common?.errorCode !== '0') return [];
     return (data.results.juso ?? []) as JusoResult[];
   } catch {
+    // CORS 실패 시 빈 배열 반환
     return [];
   }
-}
-
-// Mock data for development without API key
-export function getMockStations(): ChargingStation[] {
-  return [
-    {
-      statId: 'ME000001',
-      statNm: '서울역 급속충전소',
-      addr: '서울특별시 용산구 한강대로 405',
-      location: '서울역 주차장 지하 2층',
-      lat: 37.5547,
-      lng: 126.9706,
-      useTime: '24시간 이용가능',
-      busiNm: '한국전력',
-      busiCall: '1661-9408',
-      parkingFree: true,
-      note: '',
-      chargers: [
-        { chgerId: '01', type: 'DC콤보', typeCode: '04', output: '50kW', stat: '2', statLabel: '충전대기', statColor: '#22C55E', lastUpdated: '2025-03-07 10:30:00' },
-        { chgerId: '02', type: 'DC차데모', typeCode: '01', output: '50kW', stat: '2', statLabel: '충전대기', statColor: '#22C55E', lastUpdated: '2025-03-07 10:30:00' },
-      ],
-      availableCount: 2,
-      totalCount: 2,
-      chargerTypes: ['DC콤보', 'DC차데모'],
-      maxOutput: '50kW',
-    },
-    {
-      statId: 'ME000002',
-      statNm: '숙대입구역 충전소',
-      addr: '서울특별시 용산구 청파로 109',
-      location: '숙대입구역 공영주차장',
-      lat: 37.5459,
-      lng: 126.9720,
-      useTime: '24시간 이용가능',
-      busiNm: '환경부',
-      busiCall: '1600-1234',
-      parkingFree: false,
-      note: '',
-      chargers: [
-        { chgerId: '01', type: 'DC콤보', typeCode: '04', output: '100kW', stat: '3', statLabel: '충전중', statColor: '#F59E0B', lastUpdated: '2025-03-07 10:25:00' },
-        { chgerId: '02', type: 'DC차데모', typeCode: '01', output: '50kW', stat: '3', statLabel: '충전중', statColor: '#F59E0B', lastUpdated: '2025-03-07 10:25:00' },
-        { chgerId: '03', type: 'AC완속', typeCode: '02', output: '7kW', stat: '3', statLabel: '충전중', statColor: '#F59E0B', lastUpdated: '2025-03-07 10:25:00' },
-      ],
-      availableCount: 0,
-      totalCount: 3,
-      chargerTypes: ['DC콤보', 'DC차데모', 'AC완속'],
-      maxOutput: '100kW',
-    },
-    {
-      statId: 'ME000003',
-      statNm: '남영동 공용충전소',
-      addr: '서울특별시 용산구 한강로1가 231',
-      location: '남영동 공영주차장',
-      lat: 37.5410,
-      lng: 126.9735,
-      useTime: '24시간 이용가능',
-      busiNm: '한국전력',
-      busiCall: '1661-9408',
-      parkingFree: true,
-      note: '',
-      chargers: [
-        { chgerId: '01', type: 'AC완속', typeCode: '02', output: '7kW', stat: '2', statLabel: '충전대기', statColor: '#22C55E', lastUpdated: '2025-03-07 10:20:00' },
-      ],
-      availableCount: 1,
-      totalCount: 1,
-      chargerTypes: ['AC완속'],
-      maxOutput: '7kW',
-    },
-    {
-      statId: 'ME000004',
-      statNm: '이태원 전기차 충전소',
-      addr: '서울특별시 용산구 이태원로 22',
-      location: '이태원 공영주차장',
-      lat: 37.5345,
-      lng: 126.9880,
-      useTime: '06:00~23:00',
-      busiNm: '환경부',
-      busiCall: '1600-1234',
-      parkingFree: false,
-      note: '동절기에는 22시까지 운영',
-      chargers: [
-        { chgerId: '01', type: 'DC콤보', typeCode: '04', output: '200kW', stat: '4', statLabel: '운휴', statColor: '#F04452', lastUpdated: '2025-03-07 09:00:00' },
-        { chgerId: '02', type: 'DC차데모', typeCode: '01', output: '50kW', stat: '4', statLabel: '운휴', statColor: '#F04452', lastUpdated: '2025-03-07 09:00:00' },
-      ],
-      availableCount: 0,
-      totalCount: 2,
-      chargerTypes: ['DC콤보', 'DC차데모'],
-      maxOutput: '200kW',
-    },
-    {
-      statId: 'ME000005',
-      statNm: '한남동 급속충전소',
-      addr: '서울특별시 용산구 한남대로 82',
-      location: '한남동 주민센터 주차장',
-      lat: 37.5340,
-      lng: 126.9970,
-      useTime: '24시간 이용가능',
-      busiNm: '한국전력',
-      busiCall: '1661-9408',
-      parkingFree: true,
-      note: '',
-      chargers: [
-        { chgerId: '01', type: 'AC3상', typeCode: '07', output: '7kW', stat: '1', statLabel: '통신이상', statColor: '#8B95A1', lastUpdated: '2025-03-06 23:00:00' },
-      ],
-      availableCount: 0,
-      totalCount: 1,
-      chargerTypes: ['AC3상'],
-      maxOutput: '7kW',
-    },
-    {
-      statId: 'ME000006',
-      statNm: '판교역 급속충전소',
-      addr: '경기도 성남시 분당구 판교역로 235',
-      location: '판교역 환승주차장',
-      lat: 37.3947,
-      lng: 127.1114,
-      useTime: '24시간 이용가능',
-      busiNm: '환경부',
-      busiCall: '1600-1234',
-      parkingFree: false,
-      note: '',
-      chargers: [
-        { chgerId: '01', type: 'DC콤보', typeCode: '04', output: '100kW', stat: '3', statLabel: '충전중', statColor: '#F59E0B', lastUpdated: '2025-03-07 10:15:00' },
-        { chgerId: '02', type: 'DC차데모', typeCode: '01', output: '50kW', stat: '3', statLabel: '충전중', statColor: '#F59E0B', lastUpdated: '2025-03-07 10:15:00' },
-        { chgerId: '03', type: 'DC콤보', typeCode: '04', output: '100kW', stat: '3', statLabel: '충전중', statColor: '#F59E0B', lastUpdated: '2025-03-07 10:15:00' },
-        { chgerId: '04', type: 'DC차데모', typeCode: '01', output: '50kW', stat: '2', statLabel: '충전대기', statColor: '#22C55E', lastUpdated: '2025-03-07 10:15:00' },
-      ],
-      availableCount: 1,
-      totalCount: 4,
-      chargerTypes: ['DC콤보', 'DC차데모'],
-      maxOutput: '100kW',
-    },
-    {
-      statId: 'ME000007',
-      statNm: '강남 테헤란로 충전소',
-      addr: '서울특별시 강남구 테헤란로 152',
-      location: '강남 파이낸스센터 주차장',
-      lat: 37.5005,
-      lng: 127.0367,
-      useTime: '07:00~22:00',
-      busiNm: '한국전력',
-      busiCall: '1661-9408',
-      parkingFree: false,
-      note: '',
-      chargers: [
-        { chgerId: '01', type: 'AC완속', typeCode: '02', output: '7kW', stat: '2', statLabel: '충전대기', statColor: '#22C55E', lastUpdated: '2025-03-07 10:00:00' },
-        { chgerId: '02', type: 'AC완속', typeCode: '02', output: '7kW', stat: '2', statLabel: '충전대기', statColor: '#22C55E', lastUpdated: '2025-03-07 10:00:00' },
-        { chgerId: '03', type: 'AC완속', typeCode: '02', output: '7kW', stat: '2', statLabel: '충전대기', statColor: '#22C55E', lastUpdated: '2025-03-07 10:00:00' },
-      ],
-      availableCount: 3,
-      totalCount: 3,
-      chargerTypes: ['AC완속'],
-      maxOutput: '7kW',
-    },
-  ];
 }

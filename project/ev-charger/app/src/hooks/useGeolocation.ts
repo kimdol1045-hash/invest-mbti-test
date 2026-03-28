@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getCurrentPosition, type Position } from '../utils/geolocation';
+import { getCurrentPosition, getNearestDistrict, type Position } from '../utils/geolocation';
 import { getRegionFromCoords } from '../utils/area-codes';
 
 interface GeolocationState {
@@ -28,10 +28,13 @@ export function useGeolocation() {
     try {
       const pos = await getCurrentPosition();
       const region = getRegionFromCoords(pos.lat, pos.lng);
+      // 서울이면 구 단위로 표시
+      const district = getNearestDistrict(pos.lat, pos.lng);
+      const display = district ? `서울 ${district}` : region.name;
       setState({
         position: pos,
         regionName: region.name,
-        displayLocation: region.name,
+        displayLocation: display,
         areaCode: region.code,
         loading: false,
         error: null,

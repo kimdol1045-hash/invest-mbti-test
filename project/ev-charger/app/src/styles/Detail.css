@@ -144,6 +144,13 @@
   cursor: pointer;
 }
 
+.detail-loading-chargers {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #8B95A1;
+}
+
 .detail-toast-wrap {
   position: fixed;
   bottom: 100px;

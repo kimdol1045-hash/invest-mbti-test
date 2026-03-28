@@ -1,0 +1,13 @@
+{
+  "appName": "ev-charger",
+  "permissions": [
+    {
+      "name": "clipboard",
+      "access": "write"
+    },
+    {
+      "name": "geolocation",
+      "access": "access"
+    }
+  ]
+}

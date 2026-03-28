@@ -1,9 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import type { ChargingStation } from '../types/charger';
-import { useChargerStatus } from '../hooks/useChargerStatus';
 import { useStationById } from '../hooks/useStationById';
-import { storage } from '../utils/storage';
 import { copyToClipboard } from '../utils/clipboard';
 import PageHeader from '../components/PageHeader';
 import ChargerInfoCard from '../components/ChargerInfoCard';
@@ -17,28 +15,21 @@ export default function Detail() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  // 1순위: location.state (앱 내 이동), 2순위: ?statId= 쿼리 파라미터 (딥링크)
   const stateStation = location.state?.station as ChargingStation | undefined;
   const statIdParam = searchParams.get('statId');
+  const statId = stateStation?.statId ?? statIdParam;
 
-  const { data: fetchedStation, isLoading: fetching } = useStationById(
-    stateStation ? null : statIdParam,
-  );
+  // 항상 서버에서 전체 데이터(충전기 상세 포함) 가져오기
+  const { data: fetchedStation, isLoading: fetching } = useStationById(statId);
 
-  const station = stateStation ?? fetchedStation ?? null;
+  // fetchedStation 우선, 없으면 stateStation fallback
+  const station = fetchedStation ?? stateStation ?? null;
 
   const [navOpen, setNavOpen] = useState(false);
-  const [isFav, setIsFav] = useState(() => station ? storage.isFavorite(station.statId) : false);
   const [toastMsg, setToastMsg] = useState('');
 
-  const { data: chargers } = useChargerStatus({
-    statId: station?.statId ?? '',
-    chargers: station?.chargers ?? [],
-    enabled: !!station,
-  });
-
-  // 딥링크 로딩 중
-  if (!stateStation && statIdParam && fetching) {
+  // 로딩 중 (서버 데이터 아직 없고, navigation state도 없을 때)
+  if (!station && fetching) {
     return (
       <div className="detail">
         <PageHeader title="충전소 상세" />
@@ -67,20 +58,7 @@ export default function Detail() {
     setTimeout(() => setToastMsg(''), 2000);
   };
 
-  const handleToggleFav = () => {
-    const added = storage.toggleFavorite({
-      statId: station.statId,
-      statNm: station.statNm,
-      addr: station.addr,
-      lat: station.lat,
-      lng: station.lng,
-    });
-    setIsFav(added);
-    setToastMsg(added ? '즐겨찾기에 추가했어요' : '즐겨찾기에서 삭제했어요');
-    setTimeout(() => setToastMsg(''), 2000);
-  };
-
-  const displayChargers = chargers ?? station.chargers;
+  const displayChargers = station.chargers ?? [];
 
   const statusSummary = useMemo(() => {
     const available = displayChargers.filter(c => c.stat === '2').length;
@@ -91,17 +69,14 @@ export default function Detail() {
 
   return (
     <div className="detail">
-      <PageHeader
-        title={station.statNm}
-        rightElement={
-          <button className="detail-fav-toggle" onClick={handleToggleFav}>
-            {isFav ? '❤️' : '🤍'}
-          </button>
-        }
-      />
+      <PageHeader title={station.statNm} />
 
       <div className="detail-scroll">
-        <StationSummaryCard summary={statusSummary} />
+        {displayChargers.length > 0 ? (
+          <StationSummaryCard summary={statusSummary} />
+        ) : fetching ? (
+          <div className="detail-loading-chargers">충전기 정보를 불러오는 중...</div>
+        ) : null}
 
         <div className="detail-info-section">
           <div className="detail-info-row">
@@ -146,14 +121,16 @@ export default function Detail() {
           </div>
         </div>
 
-        <div className="detail-charger-section">
-          <h2 className="detail-section-title">충전기 현황</h2>
-          <div className="detail-charger-list">
-            {displayChargers.map(charger => (
-              <ChargerInfoCard key={charger.chgerId} charger={charger} />
-            ))}
+        {displayChargers.length > 0 && (
+          <div className="detail-charger-section">
+            <h2 className="detail-section-title">충전기 현황</h2>
+            <div className="detail-charger-list">
+              {displayChargers.map(charger => (
+                <ChargerInfoCard key={charger.chgerId} charger={charger} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <div className="detail-cta">

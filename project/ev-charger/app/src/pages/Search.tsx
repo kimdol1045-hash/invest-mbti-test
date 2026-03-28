@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useQueryClient } from '@tanstack/react-query';
 import { searchJuso, type JusoResult } from '../utils/api';
 import { getAreaCode } from '../utils/area-codes';
 import { useGeolocation } from '../hooks/useGeolocation';
@@ -18,8 +17,8 @@ export default function Search() {
   const [recentSearches, setRecentSearches] = useState(() => storage.getRecentSearches());
   const debounceRef = useRef<ReturnType<typeof setTimeout>>();
 
-  const { areaCode } = useGeolocation();
-  const { data: stations = [] } = useChargerStations({ areaCode });
+  const { position } = useGeolocation();
+  const { data: stations = [] } = useChargerStations({ position });
 
   useEffect(() => {
     inputRef.current?.focus();
