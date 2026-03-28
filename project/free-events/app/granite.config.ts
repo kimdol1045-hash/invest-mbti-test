@@ -5,7 +5,7 @@ export default defineConfig({
   brand: {
     displayName: '오늘의 문화생활',
     primaryColor: '#3182F6',
-    icon: '', // TODO: 콘솔에 로고 업로드 후 이미지 URL 입력
+    icon: 'https://raw.githubusercontent.com/kimdol1045-hash/invest-mbti-test/main/project/free-events/app/public/app-icon.png',
   },
   web: {
     host: 'localhost',
