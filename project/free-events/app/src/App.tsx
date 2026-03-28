@@ -76,6 +76,7 @@ function App() {
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/category/:category" element={<Home />} />
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { ChevronDown, MapPin, Search } from 'lucide-react';
 import { useGeolocation } from '../hooks/useGeolocation';
 import { useEvents } from '../hooks/useEvents';
@@ -12,6 +13,13 @@ import EmptyState from '../components/EmptyState';
 import type { EventCategory, SortType } from '../types/event';
 import '../styles/Home.css';
 
+const CATEGORY_MAP: Record<string, EventCategory> = {
+  exhibition: '전시',
+  performance: '공연',
+  festival: '축제',
+  experience: '체험',
+};
+
 const SEOUL_DISTRICTS = [
   '전체', '강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구',
   '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구',
@@ -19,9 +27,11 @@ const SEOUL_DISTRICTS = [
 ];
 
 export default function Home() {
+  const { category: categoryParam } = useParams<{ category?: string }>();
   const { position, loading: geoLoading, permissionDenied, consentNeeded, grantConsent, skipConsent } = useGeolocation();
 
-  const [category, setCategory] = useState<EventCategory>('전체');
+  const initialCategory = categoryParam ? (CATEGORY_MAP[categoryParam] || '전체') : '전체';
+  const [category, setCategory] = useState<EventCategory>(initialCategory);
   const [district, setDistrict] = useState('전체');
   const [searchOpen, setSearchOpen] = useState(false);
   const [sort, setSort] = useState<SortType>(() => permissionDenied ? '최신순' : '거리순');
