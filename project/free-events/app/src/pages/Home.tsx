@@ -1,6 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Search, ChevronDown, MapPin } from 'lucide-react';
+import { ChevronDown, MapPin, Search } from 'lucide-react';
 import { useGeolocation } from '../hooks/useGeolocation';
 import { useEvents } from '../hooks/useEvents';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
@@ -13,11 +12,18 @@ import EmptyState from '../components/EmptyState';
 import type { EventCategory, SortType } from '../types/event';
 import '../styles/Home.css';
 
+const SEOUL_DISTRICTS = [
+  '전체', '강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구',
+  '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구',
+  '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구',
+];
+
 export default function Home() {
-  const navigate = useNavigate();
   const { position, loading: geoLoading, permissionDenied, consentNeeded, grantConsent, skipConsent } = useGeolocation();
 
   const [category, setCategory] = useState<EventCategory>('전체');
+  const [district, setDistrict] = useState('전체');
+  const [searchOpen, setSearchOpen] = useState(false);
   const [sort, setSort] = useState<SortType>(() => permissionDenied ? '최신순' : '거리순');
   const [sortOpen, setSortOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
@@ -45,6 +51,10 @@ export default function Home() {
       return e;
     });
 
+    if (district !== '전체') {
+      result = result.filter(e => e.address === district);
+    }
+
     if (sort === '거리순' && position) {
       result.sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity));
     } else {
@@ -52,7 +62,7 @@ export default function Home() {
     }
 
     return result;
-  }, [events, position, sort]);
+  }, [events, position, sort, district]);
 
   const { visibleItems, hasMore, sentinelRef } = useInfiniteScroll({
     items: sortedEvents,
@@ -65,15 +75,35 @@ export default function Home() {
         <h1 className="home-title">오늘의 문화생활</h1>
         <span className="home-region-label">
           <MapPin size={13} />
-          {position ? (getNearestDistrict(position.lat, position.lng) || '서울') : '서울'}
+          {district !== '전체' ? district : position ? (getNearestDistrict(position.lat, position.lng) || '서울') : '서울'}
         </span>
       </div>
 
-      <div className="home-search-wrap" onClick={() => navigate('/search')}>
-        <div className="home-search-input-wrap">
+      <div className="home-search-wrap">
+        <div className="home-search-input-wrap" onClick={() => setSearchOpen(v => !v)}>
           <Search size={16} color="#B0B8C1" />
-          <span className="home-search-placeholder">행사명, 장소, 지역을 검색해보세요</span>
+          <span className={district === '전체' ? 'home-search-placeholder' : 'home-search-selected'}>
+            {district === '전체' ? '지역구를 선택해보세요' : district}
+          </span>
+          {district !== '전체' && (
+            <button className="home-search-clear" onClick={(e) => { e.stopPropagation(); setDistrict('전체'); setSearchOpen(false); }}>
+              ✕
+            </button>
+          )}
         </div>
+        {searchOpen && (
+          <div className="home-district-dropdown">
+            {SEOUL_DISTRICTS.map(d => (
+              <button
+                key={d}
+                className={`home-district-chip ${district === d ? 'home-district-chip-active' : ''}`}
+                onClick={() => { setDistrict(d); setSearchOpen(false); }}
+              >
+                {d}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <CategoryTabs selected={category} onChange={setCategory} />
