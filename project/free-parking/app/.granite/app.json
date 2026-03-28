@@ -1,0 +1,13 @@
+{
+  "appName": "park-anywhere",
+  "permissions": [
+    {
+      "name": "geolocation",
+      "access": "access"
+    },
+    {
+      "name": "clipboard",
+      "access": "write"
+    }
+  ]
+}

@@ -255,7 +255,7 @@ export async function fetchRealtimeInfo(parkingId: string): Promise<RealtimeInfo
       prkplceNo: parkingId,
     });
     if (items.length > 0) {
-      const item = items[0] as unknown as Record<string, unknown>;
+      const item = items[0] as Record<string, unknown>;
       const capacity = Number(item.pkfc ?? item.prkcmprt ?? 0);
       const currentCount = Number(item.nowPrkVhclCnt ?? 0);
       const available = Math.max(0, capacity - currentCount);
@@ -278,7 +278,7 @@ export async function fetchRealtimeBatch(parkingIds: string[]): Promise<Map<stri
     const idSet = new Set(parkingIds);
 
     for (const raw of items) {
-      const item = raw as unknown as Record<string, unknown>;
+      const item = raw as Record<string, unknown>;
       const id = String(item.prkplceNo ?? '');
       if (!id || !idSet.has(id)) continue;
 

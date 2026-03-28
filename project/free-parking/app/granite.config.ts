@@ -5,7 +5,7 @@ export default defineConfig({
   brand: {
     displayName: '주차해요',
     primaryColor: '#3182F6',
-    icon: 'https://raw.githubusercontent.com/kimdol1045-hash/invest-mbti-test/main/project/free-parking/app/public/app-icon.png',
+    icon: '',
   },
   web: {
     host: 'localhost',

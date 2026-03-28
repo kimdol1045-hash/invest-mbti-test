@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@toss/tds-mobile';
 import {
-  ChevronLeft, Share2,
+  ChevronLeft, Heart, Share2,
   MapPin, Clock, Banknote, Layers, Phone, PhoneCall, Building2, Copy, Navigation,
 } from 'lucide-react';
 import { useGeolocation } from '../hooks/useGeolocation';
 import { useParkingLotById, useRealtimeInfo } from '../hooks/useParkingLots';
 import { formatFee } from '../utils/api';
+import { storage } from '../utils/storage';
 import NavigationActionSheet from '../components/NavigationActionSheet';
 
 function formatUpdatedAt(timeStr: string): string {
@@ -33,7 +34,20 @@ function Detail() {
     position?.lng ?? null,
   );
   const { data: realtime } = useRealtimeInfo(parkingId);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+
+  useEffect(() => {
+    if (parkingId) {
+      setIsFavorite(storage.isFavorite(parkingId));
+    }
+  }, [parkingId]);
+
+  const handleToggleFavorite = () => {
+    if (!parkingId) return;
+    const nowFav = storage.toggleFavorite(parkingId);
+    setIsFavorite(nowFav);
+  };
 
   const handleShare = async () => {
     if (!lot) return;
@@ -104,12 +118,24 @@ function Detail() {
             {lot.name}
           </span>
         </div>
-        <button
-          onClick={handleShare}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex' }}
-        >
-          <Share2 size={22} color="#B0B8C1" />
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <button
+            onClick={handleToggleFavorite}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex' }}
+          >
+            <Heart
+              size={22}
+              fill={isFavorite ? '#3182F6' : 'none'}
+              color={isFavorite ? '#3182F6' : '#B0B8C1'}
+            />
+          </button>
+          <button
+            onClick={handleShare}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex' }}
+          >
+            <Share2 size={22} color="#B0B8C1" />
+          </button>
+        </div>
       </div>
 
       {/* 히어로 섹션 */}

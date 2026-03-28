@@ -2,33 +2,39 @@ import { useState, useCallback, useRef, useMemo } from 'react';
 import { flushSync } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@toss/tds-mobile';
-import { MapPin, Search, ChevronRight } from 'lucide-react';
+import { MapPin, Search, Heart, ChevronRight, ArrowLeft } from 'lucide-react';
 import { useGeolocation } from '../hooks/useGeolocation';
 import { useReverseGeocode } from '../hooks/useReverseGeocode';
 import { useParkingLots, useRealtimeBatch } from '../hooks/useParkingLots';
+import { storage } from '../utils/storage';
 import ParkingRow from '../components/ParkingRow';
 import type { FilterType, SortType, ParkingLot } from '../types/parking';
 
 const FILTERS: FilterType[] = ['전체', '공영', '유료', '무료'];
 
-function filterAndSort(lots: ParkingLot[] | undefined, filter: FilterType, sort: SortType): ParkingLot[] {
+function filterAndSort(lots: ParkingLot[] | undefined, filter: FilterType, sort: SortType, showFavorites: boolean): ParkingLot[] {
   if (!lots || lots.length === 0) return [];
 
   let filtered: ParkingLot[];
 
-  switch (filter) {
-    case '무료':
-      filtered = lots.filter(l => l.feeType === '무료');
-      break;
-    case '공영':
-      filtered = lots.filter(l => l.type === '노외' || l.type === '노상');
-      break;
-    case '유료':
-      filtered = lots.filter(l => l.feeType === '유료');
-      break;
-    default:
-      filtered = lots;
-      break;
+  if (showFavorites) {
+    const favIds = storage.getFavorites();
+    filtered = lots.filter(l => favIds.includes(l.id));
+  } else {
+    switch (filter) {
+      case '무료':
+        filtered = lots.filter(l => l.feeType === '무료');
+        break;
+      case '공영':
+        filtered = lots.filter(l => l.type === '노외' || l.type === '노상');
+        break;
+      case '유료':
+        filtered = lots.filter(l => l.feeType === '유료');
+        break;
+      default:
+        filtered = lots;
+        break;
+    }
   }
 
   const sorted = [...filtered];
@@ -46,6 +52,8 @@ function Home() {
   const locationName = useReverseGeocode(position?.lat ?? null, position?.lng ?? null);
   const [filter, setFilter] = useState<FilterType>('전체');
   const [sort, setSort] = useState<SortType>('distance');
+  const [showFavorites, setShowFavorites] = useState(false);
+  // 매 필터 변경마다 증가하는 카운터 → key로 사용하여 DOM 강제 재생성
   const renderKeyRef = useRef(0);
 
   const { data: lots, isLoading, error } = useParkingLots(
@@ -53,8 +61,10 @@ function Home() {
     position?.lng ?? null,
   );
 
-  const displayLots = filterAndSort(lots, filter, sort);
+  // 컴포넌트 외부 순수함수로 계산 (closure 문제 완전 배제)
+  const displayLots = filterAndSort(lots, filter, sort, showFavorites);
 
+  // 실시간 잔여석 일괄 조회
   const lotIds = useMemo(() => displayLots.map(l => l.id), [displayLots]);
   const { data: realtimeMap } = useRealtimeBatch(lotIds);
 
@@ -73,6 +83,70 @@ function Home() {
     });
   }, []);
 
+  const handleToggleFavorites = useCallback(() => {
+    renderKeyRef.current += 1;
+    flushSync(() => {
+      setShowFavorites(v => !v);
+    });
+  }, []);
+
+  // 즐겨찾기 모드
+  if (showFavorites) {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#FFFFFF' }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          padding: '16px 20px 8px',
+          gap: 12,
+        }}>
+          <button
+            onClick={handleToggleFavorites}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 4,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <ArrowLeft size={24} color="#191F28" />
+          </button>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: '#191F28' }}>
+            즐겨찾기
+          </h1>
+        </div>
+
+        {displayLots.length === 0 ? (
+          <div style={{ padding: '60px 20px', textAlign: 'center' }}>
+            <p style={{ fontSize: 36, marginBottom: 8 }}>💙</p>
+            <p style={{ fontSize: 15, fontWeight: 600, color: '#191F28', marginBottom: 4 }}>
+              주차장을 즐겨찾기에 추가해보세요
+            </p>
+            <p style={{ fontSize: 13, color: '#8B95A1' }}>
+              주차장 상세에서 하트를 눌러 저장할 수 있어요
+            </p>
+          </div>
+        ) : (
+          <>
+            <div style={{ padding: '8px 20px' }}>
+              <span style={{ fontSize: 13, color: '#8B95A1' }}>
+                즐겨찾기 {displayLots.length}개
+              </span>
+            </div>
+            <div>
+              {displayLots.map(lot => (
+                <ParkingRow key={lot.id} lot={lot} realtime={realtimeMap?.get(lot.id)} />
+              ))}
+            </div>
+          </>
+        )}
+        <div style={{ height: 40 }} />
+      </div>
+    );
+  }
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#FFFFFF' }}>
       {/* 헤더 */}
@@ -85,6 +159,19 @@ function Home() {
         <h1 style={{ fontSize: 22, fontWeight: 700, color: '#191F28' }}>
           주차해요
         </h1>
+        <button
+          onClick={handleToggleFavorites}
+          style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 4,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Heart size={24} fill="none" color="#6B7684" />
+        </button>
       </div>
 
       {/* 위치 표시 */}
