@@ -116,7 +116,7 @@ export default function Home() {
 
         <div className="home-divider" />
 
-        {(geoLoading || stationsLoading) ? (
+        {stationsLoading && filteredStations.length === 0 ? (
           <LoadingScreen />
         ) : permissionDenied && stations.length === 0 ? (
           <div className="home-empty">
