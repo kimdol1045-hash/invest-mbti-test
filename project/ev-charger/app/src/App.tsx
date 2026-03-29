@@ -48,35 +48,11 @@ function BackEventHandler() {
   return null;
 }
 
-function HomeEventHandler() {
-  useEffect(() => {
-    let unsubscribe: (() => void) | null = null;
-    import('@apps-in-toss/web-framework')
-      .then(({ graniteEvent }) => {
-        unsubscribe = graniteEvent.addEventListener('homeEvent', {
-          onEvent: () => {
-            const idx = window.history.state?.idx || 0;
-            if (idx > 0) {
-              window.history.go(-idx);
-            }
-          },
-          onError: () => {},
-        });
-      })
-      .catch(() => {});
-
-    return () => { unsubscribe?.(); };
-  }, []);
-
-  return null;
-}
-
 function App() {
   return (
     <ErrorBoundary>
       <ScrollToTop />
       <BackEventHandler />
-      <HomeEventHandler />
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route path="/" element={<Home />} />
