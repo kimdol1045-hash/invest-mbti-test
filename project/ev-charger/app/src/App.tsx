@@ -25,12 +25,16 @@ function BackEventHandler() {
     // 홈: 리스너 없이 프레임워크 기본 동작 (종료 팝업)
     if (pathname === '/') return;
 
+    // 클로저 지역변수로 stale import resolve 차단
+    let cancelled = false;
     let unsubscribe: (() => void) | null = null;
+
     import('@apps-in-toss/web-framework')
       .then(({ graniteEvent }) => {
+        // pathname 변경으로 cleanup이 이미 실행됐으면 등록하지 않음
+        if (cancelled) return;
         unsubscribe = graniteEvent.addEventListener('backEvent', {
           onEvent: () => {
-            // 딥링크 직접 진입 시 히스토리 없으면 홈으로
             if (window.history.state?.idx === 0) {
               navigate('/', { replace: true });
             } else {
@@ -42,8 +46,34 @@ function BackEventHandler() {
       })
       .catch(() => {});
 
-    return () => { unsubscribe?.(); };
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
   }, [pathname, navigate]);
+
+  return null;
+}
+
+function HomeEventHandler() {
+  useEffect(() => {
+    let unsubscribe: (() => void) | null = null;
+    import('@apps-in-toss/web-framework')
+      .then(({ graniteEvent }) => {
+        unsubscribe = graniteEvent.addEventListener('homeEvent', {
+          onEvent: () => {
+            const idx = window.history.state?.idx || 0;
+            if (idx > 0) {
+              window.history.go(-idx);
+            }
+          },
+          onError: () => {},
+        });
+      })
+      .catch(() => {});
+
+    return () => { unsubscribe?.(); };
+  }, []);
 
   return null;
 }
@@ -53,6 +83,7 @@ function App() {
     <ErrorBoundary>
       <ScrollToTop />
       <BackEventHandler />
+      <HomeEventHandler />
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route path="/" element={<Home />} />
