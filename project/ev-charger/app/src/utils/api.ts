@@ -79,9 +79,34 @@ function getNearestZscodes(lat: number, lng: number, count = 1): string[] {
     .map(d => d.zscode);
 }
 
-// 구별 인메모리 캐시
+// 구별 인메모리 캐시 + localStorage 영구 캐시
 const districtCache = new Map<string, { stations: ChargingStation[]; rawItems: any[]; time: number }>();
 const CACHE_TTL = 3 * 60 * 1000;
+const LS_CACHE_TTL = 30 * 60 * 1000; // localStorage는 30분
+
+function loadFromLocalStorage(zscode: string): { stations: ChargingStation[]; rawItems: any[]; time: number } | null {
+  try {
+    const raw = localStorage.getItem(`ev-cache-${zscode}`);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (Date.now() - parsed.time > LS_CACHE_TTL) {
+      localStorage.removeItem(`ev-cache-${zscode}`);
+      return null;
+    }
+    return parsed;
+  } catch { return null; }
+}
+
+function saveToLocalStorage(zscode: string, data: { stations: ChargingStation[]; rawItems: any[]; time: number }) {
+  try {
+    // rawItems는 너무 크므로 stations만 저장
+    localStorage.setItem(`ev-cache-${zscode}`, JSON.stringify({
+      stations: data.stations,
+      rawItems: [],
+      time: data.time,
+    }));
+  } catch { /* quota exceeded */ }
+}
 
 async function fetchFromAPI(params: Record<string, string>): Promise<any[]> {
   const allItems: any[] = [];
@@ -173,15 +198,32 @@ function mergeToStations(items: any[], includeChargers = false): ChargingStation
 }
 
 async function loadDistrict(zscode: string): Promise<{ stations: ChargingStation[]; rawItems: any[] }> {
+  // 1. 인메모리 캐시
   const cached = districtCache.get(zscode);
   if (cached && Date.now() - cached.time < CACHE_TTL) {
     return cached;
   }
 
+  // 2. localStorage 캐시 (인메모리 없을 때 즉시 반환용)
+  const lsCached = loadFromLocalStorage(zscode);
+  if (lsCached && lsCached.stations.length > 0) {
+    districtCache.set(zscode, lsCached);
+    // 백그라운드에서 최신 데이터 갱신
+    fetchFromAPI({ zscode }).then(items => {
+      const stations = mergeToStations(items);
+      const result = { stations, rawItems: items, time: Date.now() };
+      districtCache.set(zscode, result);
+      saveToLocalStorage(zscode, result);
+    }).catch(() => {});
+    return lsCached;
+  }
+
+  // 3. API 직접 호출
   const items = await fetchFromAPI({ zscode });
   const stations = mergeToStations(items);
   const result = { stations, rawItems: items, time: Date.now() };
   districtCache.set(zscode, result);
+  saveToLocalStorage(zscode, result);
   return result;
 }
 

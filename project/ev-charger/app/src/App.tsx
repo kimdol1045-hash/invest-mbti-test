@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingScreen from './components/LoadingScreen';
@@ -20,13 +20,17 @@ function ScrollToTop() {
 function BackEventHandler() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const cancelledRef = useRef(false);
 
   useEffect(() => {
     if (pathname === '/') return;
 
+    cancelledRef.current = false;
     let unsubscribe: (() => void) | null = null;
+
     import('@apps-in-toss/web-framework')
       .then(({ graniteEvent }) => {
+        if (cancelledRef.current) return;
         unsubscribe = graniteEvent.addEventListener('backEvent', {
           onEvent: () => {
             if (window.history.state?.idx === 0) {
@@ -40,17 +44,25 @@ function BackEventHandler() {
       })
       .catch(() => {});
 
-    return () => { unsubscribe?.(); };
+    return () => {
+      cancelledRef.current = true;
+      unsubscribe?.();
+    };
   }, [pathname, navigate]);
 
   return null;
 }
 
 function HomeEventHandler() {
+  const cancelledRef = useRef(false);
+
   useEffect(() => {
+    cancelledRef.current = false;
     let unsubscribe: (() => void) | null = null;
+
     import('@apps-in-toss/web-framework')
       .then(({ graniteEvent }) => {
+        if (cancelledRef.current) return;
         unsubscribe = graniteEvent.addEventListener('homeEvent', {
           onEvent: () => {
             const idx = window.history.state?.idx || 0;
@@ -63,7 +75,10 @@ function HomeEventHandler() {
       })
       .catch(() => {});
 
-    return () => { unsubscribe?.(); };
+    return () => {
+      cancelledRef.current = true;
+      unsubscribe?.();
+    };
   }, []);
 
   return null;
